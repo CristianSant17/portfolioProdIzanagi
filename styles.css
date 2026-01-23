@@ -67,11 +67,29 @@ body {
 }
 
 .logo-img {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--primary-dark);
+    transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+    height: 150px;
+    width: 150px;
+}
+
+.logo-img-hero {
+    height: 200px;
+    width: 200px;
+    border-radius: 10%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.logo-img-hero:hover {
+    border: 5px solid var(--primary-dark);
 }
 
 .logo-text {
