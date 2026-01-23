@@ -113,13 +113,13 @@ function initializeStats() {
     // YouTube Subscribers
     const subscribersElement = document.getElementById('youtube-subscribers');
     if (subscribersElement) {
-        animateCounter(subscribersElement, YOUTUBE_SUBSCRIBERS, 2000);
+        animateCounter(subscribersElement, YOUTUBE_SUBSCRIBERS, 5500);
     }
     
     // YouTube Views
     const viewsElement = document.getElementById('youtube-views');
     if (viewsElement) {
-        animateCounter(viewsElement, YOUTUBE_VIEWS, 2000);
+        animateCounter(viewsElement, YOUTUBE_VIEWS, 5500);
     }
     
     // Links YouTube
