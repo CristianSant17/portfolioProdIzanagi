@@ -837,6 +837,118 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 // ============================================
+// ============================================
+// FAQ - TOGGLE QUESTIONS
+// ============================================
+
+function toggleFAQ(button) {
+    const faqItem = button.parentElement;
+    const isActive = faqItem.classList.contains('active');
+    
+    // Fechar todos os outros FAQs
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Toggle do FAQ clicado
+    if (!isActive) {
+        faqItem.classList.add('active');
+    }
+}
+
+// ============================================
+// SCROLL TO TOP BUTTON
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (scrollToTopBtn) {
+        // Mostrar/esconder botão baseado no scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll suave ao topo
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+
+// ============================================
+// MODAL PREVIEW BEATS
+// ============================================
+
+function openBeatModal(beatName, genre, bpm, price, description) {
+    // Se o modal não existe, criar
+    let modal = document.getElementById('beatModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'beatModal';
+        modal.className = 'beat-modal';
+        modal.innerHTML = `
+            <div class="beat-modal-content">
+                <button class="beat-modal-close" onclick="closeBeatModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h3 class="modal-beat-title" id="modalBeatTitle">Beat</h3>
+                <span class="modal-beat-genre" id="modalBeatGenre">Rap</span>
+                <p class="modal-beat-bpm" id="modalBeatBPM">120 BPM</p>
+                <audio controls class="modal-beat-player" id="modalBeatPlayer"></audio>
+                <p class="modal-beat-description" id="modalBeatDescription"></p>
+                <div class="modal-beat-price">
+                    <h4>Preço</h4>
+                    <p id="modalBeatPrice">R$ 0,00</p>
+                </div>
+                <div class="modal-beat-actions">
+                    <button class="btn btn-primary" onclick="goToWhatsApp()">Comprar Agora</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    // Preencher conteúdo
+    document.getElementById('modalBeatTitle').textContent = beatName;
+    document.getElementById('modalBeatGenre').textContent = genre.toUpperCase();
+    document.getElementById('modalBeatBPM').textContent = bpm + ' BPM';
+    document.getElementById('modalBeatDescription').textContent = description || 'Beat produzido com qualidade profissional.';
+    document.getElementById('modalBeatPrice').textContent = 'R$ ' + price;
+    
+    // Mostrar modal
+    modal.classList.add('active');
+}
+
+function closeBeatModal() {
+    const modal = document.getElementById('beatModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
+// Fechar modal ao clicar fora
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('beatModal');
+    if (modal && event.target === modal) {
+        closeBeatModal();
+    }
+});
+
+// Fechar modal com tecla ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeBeatModal();
+    }
+});
+
 // LOG DE INICIALIZAÇÃO
 // ============================================
 

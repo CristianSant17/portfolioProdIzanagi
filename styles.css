@@ -1461,11 +1461,293 @@ body {
     .social-links a {
         font-size: 1.3rem;
     }
+
+    /* FAQ MOBILE */
+    .faq-container {
+        max-width: 100%;
+    }
+
+    .faq-question {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .faq-answer {
+        padding: 0 1.2rem;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 0 1.2rem 1.2rem 1.2rem;
+    }
+
+    .faq-answer p {
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+
+    /* SCROLL TO TOP */
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+    }
+
+    /* MODAL MOBILE */
+    .beat-modal-content {
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+
+    .modal-beat-title {
+        font-size: 1.3rem;
+        margin-right: 1.5rem;
+    }
+
+    .modal-beat-actions {
+        flex-direction: column;
+    }
+
+/* ============================================
+   SEÇÃO FAQ
+   ============================================ */
+
+.faq-section {
+    background-color: rgba(29, 71, 185, 0.02);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background-color: var(--tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(29, 123, 185, 0.2);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.faq-question:hover {
+    background-color: rgba(29, 123, 185, 0.05);
+}
+
+.faq-question i {
+    color: var(--primary-dark);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 1.5rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
 }
 
 /* ============================================
-   RESPONSIVIDADE - SMARTPHONES MUITO PEQUENOS
+   SCROLL TO TOP BUTTON
    ============================================ */
+
+.scroll-to-top {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-dark);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 999;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top:hover {
+    background-color: var(--accent-light);
+    transform: translateY(-5px);
+}
+
+.scroll-to-top.visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   MODAL PREVIEW BEATS
+   ============================================ */
+
+.beat-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.beat-modal.active {
+    display: flex;
+}
+
+.beat-modal-content {
+    background-color: var(--tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.beat-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.beat-modal-close:hover {
+    background-color: rgba(255, 0, 110, 0.3);
+    color: var(--accent-light);
+}
+
+.modal-beat-title {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+}
+
+.modal-beat-genre {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background-color: rgba(255, 20, 147, 0.2);
+    color: var(--accent-light);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.modal-beat-bpm {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-beat-player {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+}
+
+.modal-beat-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.modal-beat-price {
+    background-color: rgba(29, 123, 185, 0.1);
+    border: 1px solid var(--primary-dark);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-beat-price h4 {
+    color: var(--primary-dark);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.modal-beat-price p {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.modal-beat-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-beat-actions .btn {
+    flex: 1;
+}
 
 @media (max-width: 360px) {
     .navbar-content {
