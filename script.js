@@ -253,14 +253,14 @@ function createBeatCard(name, genre, bpm, filename, index, customPrice = null) {
                     <p class="option-type">Não Exclusivo</p>
                     <p class="price">R$ ${price.nonExclusive.toFixed(2).replace('.', ',')}</p>
                     <button class="btn btn-buy" onclick="openWhatsAppChat('${name} - Não Exclusivo', ${price.nonExclusive})">
-                        <i class="fab fa-whatsapp"></i> Comprar
+                        <i class="fab fa-whatsapp"></i> Comprar via whatsapp
                     </button>
                 </div>
                 <div class="price-option">
                     <p class="option-type">Exclusivo</p>
                     <p class="price">R$ ${price.exclusive.toFixed(2).replace('.', ',')}</p>
                     <button class="btn btn-buy exclusive" onclick="openWhatsAppChat('${name} - Exclusivo', ${price.exclusive})">
-                        <i class="fab fa-whatsapp"></i> Comprar
+                        <i class="fab fa-whatsapp"></i> Comprar via whatsapp
                     </button>
                 </div>
             </div>
@@ -472,7 +472,7 @@ function loadYoutubePlaylistEmbedFallback(container) {
 
 function openWhatsAppChat(beatName, price) {
     // Criar a mensagem
-    const message = `Olá! 🎵 Tenho interesse em comprar o beat "${beatName}" por R$ ${price.toFixed(2).replace('.', ',')}. Qual é o próximo passo?`;
+    const message = `Olá! Tenho interesse em comprar o beat *"${beatName}" por R$ ${price.toFixed(2).replace('.', ',')}*. Qual é o próximo passo?`;
 
     // Codificar a mensagem para URL
     const encodedMessage = encodeURIComponent(message);
