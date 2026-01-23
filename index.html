@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prod.Izanagi - Beatmaker | Rap, Trap, Boom Bap</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="recursos/imagens/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="logo">
+                    <img src="recursos/imagens/logo.png" alt="Prod.Izanagi Logo" class="logo-img">
+                    <span class="logo-text">Prod.Izanagi</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Início</a></li>
+                    <li><a href="#production" class="nav-link">Produções</a></li>
+                    <li><a href="#beats" class="nav-link">Beats</a></li>
+                    <li><a href="#demo" class="nav-link">Demo</a></li>
+                    <li><a href="#testimonials" class="nav-link">Avaliações</a></li>
+                    <li><a href="#contact" class="nav-link">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SEÇÃO HOME/HERO -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <img src="recursos/imagens/logo.png" alt="Prod.Izanagi Logo" class="logo-img-hero">
+                <h1>Prod.Izanagi</h1>
+                <p class="hero-subtitle">Beats Premium em Rap, Trap & Boom Bap</p>
+                <p class="hero-description">Produções de qualidade profissional para artistas independentes</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('beats').scrollIntoView({behavior: 'smooth'})">Comprar Beats</button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})">Ouvir Demos</button>
+                </div>
+                
+                <!-- ESTATÍSTICAS -->
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <a href="https://www.youtube.com/@prod.izanagi" target="_blank" class="stat-link" data-youtube-link>
+                            <h3 id="youtube-subscribers">0</h3>
+                            <p>Inscritos no YouTube</p>
+                        </a>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <h3 id="youtube-views">0</h3>
+                            <p>Views em Produções Vendidas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO PRODUÇÕES/ARTISTAS -->
+        <section id="production" class="section">
+            <div class="section-header">
+                <h2>Produções Realizadas</h2>
+                <p>Beats e produções que já criei para artistas</p>
+            </div>
+            
+            <div class="productions-grid" id="productions-grid">
+                <!-- Os vídeos serão carregados automaticamente aqui via JavaScript -->
+            </div>
+
+            <!-- ÍCONES DE ARTISTAS -->
+            <div class="artists-section">
+                <h3>Artistas que Trabalhei</h3>
+                <div class="artists-icons">
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/T-KxAeOo5jyIFX6FGYV4NB-aV7zt9NmgboD_IkZUNrrJnx_iydSAXpxkQx6Gqg2hdM1LE95X=s160-c-k-c0x00ffffff-no-rj" alt="Artista 2">
+                        <p>ZeroLimitez</p>
+                    </div>
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/EI2-VjWF0lTdKRviD-lEXB6RubK1MTV_rJ7HuwSXuh4yeooepzmsd8TrZgdKy197HcaU1Owe38I=s160-c-k-c0x00ffffff-no-rj" alt="Artista 3">
+                        <p>ThunderBlack</p>
+                    </div>
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/dX2LdJJgVoD_s9gAdrbFiTdHjhPgnO7I8g_gXUUv_DZ1gRROMj5f_P6UHROf3S7XWc51iwVe_g=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <p>KMG</p>
+                    </div>
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/w-m5xbzNpnHaC79VO9YmyWHsD0ky1Tdx7FXLkJ0Q0-ArnJwbONk4--OQYKTFE3xZ1kyGG9uSjA=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <p>Guizim</p>
+                    </div>
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/QWmLEL1iTjWvq3VTd471voSloXtx9I8Ihsbd2jUfcpbOqFF8Yjlja8IOit8dVB3iUG-Jltgj=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <p>Allfeu</p>
+                    </div>
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/FNaPE7bkJW3FWY0rHW2hT2ia94vYKUNyUUKchQaQKJ1b9kPqJw_vky9x66AvdmZxcAv7OpqJ=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <p>Ychigo𝄢</p>
+                    </div>
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/c6q2xzNmcMyvMLjxeYf5XgMyC8TiReAH3xaioiF0HKm7I71NXUqLOM_uv86tZuzdbmNdfU1-sQ=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <p>Tsugix</p>
+                    </div>
+                    <div class="artist-icon">
+                        <img src="https://yt3.googleusercontent.com/IiA8VocYcMuLOpF91QBgDbEgBPIPzxwrddTzsJ13bZDzEhcgZG0WdbwtTMW_j_-nRPlmSoFDcsk=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <p>Noty Fox</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO BEATS À VENDA -->
+        <section id="beats" class="section beats-section">
+            <div class="section-header">
+                <h2>Beats à Venda</h2>
+                <p>Produções disponíveis para compra com licença exclusiva ou não exclusiva</p>
+            </div>
+
+            <div class="beats-grid" id="beats-grid">
+                <!-- Os beats serão carregados automaticamente aqui -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO BEATS DEMONSTRAÇÃO -->
+        <section id="demo" class="section">
+            <div class="section-header">
+                <h2>Beats Demonstração</h2>
+                <p>Ouça alguns dos melhores beats que já produzi</p>
+            </div>
+
+            <div class="demo-grid" id="demo-grid">
+                <!-- Os beats de demo serão carregados automaticamente aqui -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO AVALIAÇÕES/COMENTÁRIOS -->
+        <section id="testimonials" class="section">
+            <div class="section-header">
+                <h2>Avaliações de Artistas</h2>
+                <p>O que artistas que trabalharam comigo dizem</p>
+            </div>
+            <div class="testimonials-grid" id="testimonials-grid">
+                <!-- As avaliações serão carregadas automaticamente aqui via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO CONTATO -->
+        <section id="contact" class="section contact-section">
+            <div class="section-header">
+                <h2>Entre em Contato</h2>
+                <p>Tire suas dúvidas ou faça uma encomenda personalizada</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>+55 (77) 99845-4572</p>
+                        <a href="#" class="btn btn-primary" id="contact-whatsapp">Enviar Mensagem</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <p>@prod.izanagi</p>
+                        <a class="btn btn-primary" data-instagram-link>Visitar Perfil</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-youtube"></i>
+                        <h3>YouTube</h3>
+                        <p>Canal de Beats e Produções</p>
+                        <a class="btn btn-primary" data-youtube-link>Ver Canal</a>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <input type="text" placeholder="Seu Nome" required>
+                    <input type="email" placeholder="Seu Email" required>
+                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Prod.Izanagi. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbTFPWmhsQVphYzgwYlp2WnBweUdOdmFEdzY5QXxBQ3Jtc0tuMVZsX2FaWUJtV20xYUV0QWdvUzBnSUs5UUZEWVZ0WWYxTkZTeGZmZzdHX1dOc18yWUFreHh0eno2bWwtQ3V1SUh2QUFnWXBmakROOTZpQjBzOWp0TzVtd2xLcTFvbFVGWFFyM3JjdlVQVGozNkNRNA&q=https%3A%2F%2Fwww.instagram.com%2Fprod.izanagi"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@prod.izanagi"><i class="fab fa-youtube"></i></a>
+                <a href="#contact"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

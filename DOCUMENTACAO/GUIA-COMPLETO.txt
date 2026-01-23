@@ -1,0 +1,660 @@
+╔═════════════════════════════════════════════════════════════════════════════╗
+║                                                                             ║
+║                  🎵 PROD.IZANAGI - PORTFÓLIO DE BEATMAKER                   ║
+║                                                                             ║
+║                          GUIA COMPLETO DE FUNCIONAMENTO                    ║
+║                                                                             ║
+╚═════════════════════════════════════════════════════════════════════════════╝
+
+📚 ÍNDICE:
+
+1. INTRODUÇÃO
+2. ESTRUTURA DO PROJETO
+3. COMO FUNCIONA TUDO
+4. GERENCIANDO BEATS À VENDA
+5. GERENCIANDO BEATS DEMO
+6. GERENCIANDO AVALIAÇÕES
+7. PREÇOS CUSTOMIZADOS
+8. ESTRUTURA COMPLETA DO JSON
+9. TROUBLESHOOTING
+10. PERGUNTAS FREQUENTES
+
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣ INTRODUÇÃO
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Bem-vindo ao guia de uso do seu portfólio como beatmaker!
+
+Este portfólio foi criado para ser 100% AUTOMÁTICO. Isso significa:
+
+✅ Você NUNCA precisa editar HTML
+✅ Você NUNCA precisa editar CSS
+✅ Você NUNCA precisa editar JavaScript
+✅ Você SÓ precisa editar o arquivo: beats-config.json
+
+Tudo funciona por meio de um único arquivo JSON que você edita, e o portfólio
+atualiza automaticamente! 🚀
+
+═══════════════════════════════════════════════════════════════════════════════
+
+2️⃣ ESTRUTURA DO PROJETO
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Pasta do Portfólio:
+
+portifólio-Izanagi/
+├── index.html                  ← Página principal (não mexer)
+├── script.js                   ← Código JavaScript (não mexer)
+├── styles.css                  ← Estilos CSS (não mexer)
+├── beats-config.json           ← ⭐ ARQUIVO QUE VOCÊ EDITA!
+├── DOCUMENTACAO/               ← Pasta com guias
+│   └── GUIA-COMPLETO.txt       ← Este arquivo
+├── recursos/
+│   ├── imagens/
+│   │   └── logo.svg            ← Logo do portfólio
+│   └── sons/
+│       ├── sell/               ← Beats à venda
+│       │   ├── beat1.mp3
+│       │   ├── beat2.mp3
+│       │   └── ...
+│       └── demo/               ← Beats de demonstração
+│           ├── demo1.mp3
+│           ├── demo2.mp3
+│           └── ...
+
+═══════════════════════════════════════════════════════════════════════════════
+
+3️⃣ COMO FUNCIONA TUDO
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASSO A PASSO DO FUNCIONAMENTO:
+
+1. Você abre o arquivo beats-config.json
+2. Edita as configurações dos beats, preços e avaliações
+3. Salva o arquivo
+4. Abre a página no navegador
+5. JavaScript lê o JSON automaticamente
+6. JavaScript gera os cards dos beats, preços e avaliações
+7. Tudo aparece na página! ✨
+
+RESUMO:
+
+  beats-config.json
+        ↓ (lido por)
+    script.js
+        ↓ (gera)
+    HTML dinâmico
+        ↓ (estilizado por)
+    styles.css
+        ↓
+   Página final
+
+═══════════════════════════════════════════════════════════════════════════════
+
+4️⃣ GERENCIANDO BEATS À VENDA
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASSO 1: Preparar o arquivo MP3
+────────────────────────────────
+
+- Exporte seu beat em MP3 (qualidade 128-192 kbps é ideal)
+- Dê um nome descritivo: "beat-trap-agressivo.mp3"
+- Salve na pasta: recursos/sons/sell/
+
+PASSO 2: Adicionar ao beats-config.json
+──────────────────────────────────────
+
+Abra o arquivo beats-config.json e procure pela seção "beatsForSale"
+
+Adicione um novo beat assim:
+
+{
+  "filename": "beat-trap-agressivo.mp3",
+  "name": "Trap Agressivo",
+  "genre": "trap",
+  "bpm": 140,
+  "price": {
+    "nonExclusive": 29.90,
+    "exclusive": 149.90
+  }
+}
+
+CAMPOS EXPLICADOS:
+
+  filename (obrigatório)
+    └─ Nome EXATO do arquivo MP3 na pasta recursos/sons/sell/
+    └─ Exemplo: "beat-novo.mp3"
+
+  name (obrigatório)
+    └─ Nome bonito do beat que aparece no site
+    └─ Exemplo: "Novo Beat Agressivo"
+
+  genre (obrigatório)
+    └─ Gênero: trap, rap ou boombap (minúsculas!)
+    └─ Afeta a cor do badge e o preço padrão
+
+  bpm (obrigatório)
+    └─ Número inteiro: 85, 90, 95, 140, 150, etc
+
+  price (OPCIONAL)
+    └─ Se não especificar, usa preço padrão
+    └─ nonExclusive: Preço não exclusivo (formato: 29.90)
+    └─ exclusive: Preço exclusivo (formato: 149.90)
+
+PASSO 3: Salvar e atualizar
+────────────────────────────
+
+1. Salve o beats-config.json (Ctrl+S)
+2. Atualize a página no navegador (F5)
+3. Pronto! Seu beat aparece na seção "Beats"
+
+EXEMPLO COMPLETO:
+
+{
+  "filename": "beat-novo.mp3",
+  "name": "Novo Beat Premium",
+  "genre": "trap",
+  "bpm": 145,
+  "price": {
+    "nonExclusive": 39.90,
+    "exclusive": 199.90
+  }
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+
+5️⃣ GERENCIANDO BEATS DEMO
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Muito parecido com beats à venda!
+
+PASSO 1: Preparar o arquivo MP3
+────────────────────────────────
+
+- Exporte seu beat em MP3
+- Dê um nome descritivo: "demo-trap-energetico.mp3"
+- Salve na pasta: recursos/sons/demo/
+
+PASSO 2: Adicionar ao beats-config.json
+──────────────────────────────────────
+
+Procure pela seção "beatsDemos" no arquivo
+
+Adicione um novo beat assim:
+
+{
+  "filename": "demo-novo.mp3",
+  "name": "Nova Demo Energética",
+  "genre": "rap",
+  "bpm": 95
+}
+
+CAMPOS:
+
+  filename (obrigatório)
+    └─ Nome EXATO do arquivo MP3 na pasta recursos/sons/demo/
+
+  name (obrigatório)
+    └─ Nome bonito que aparece no site
+
+  genre (obrigatório)
+    └─ trap, rap ou boombap
+
+  bpm (obrigatório)
+    └─ Número inteiro
+
+DIFERENÇA DOS BEATS À VENDA:
+
+✅ Beats demo NÃO têm campo "price"
+✅ Beats demo aparecem em uma seção separada
+✅ Beats demo são SEM botão de compra
+✅ Beats demo são para demonstração de estilo
+
+PASSO 3: Salvar e atualizar
+────────────────────────────
+
+1. Salve o beats-config.json
+2. Atualize a página (F5)
+3. Pronto! Demo aparece na seção "Demo"
+
+═══════════════════════════════════════════════════════════════════════════════
+
+6️⃣ GERENCIANDO AVALIAÇÕES
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Avaliações aumentam a confiabilidade! Clientes veem que outras pessoas
+compraram e gostaram.
+
+PASSO 1: Receber feedback do cliente
+─────────────────────────────────────
+
+Quando um cliente compra e fica satisfeito, peça uma avaliação:
+
+  "Opa! Que bom que gostou! Você poderia deixar uma avaliação 
+   rápida no portfólio?"
+
+PASSO 2: Adicionar ao beats-config.json
+───────────────────────────────────────
+
+Procure pela seção "testimonials" no arquivo
+
+Adicione uma nova avaliação assim:
+
+{
+  "text": "Profissional demais! Entrega rápida, beats criativos e a melhor parte é a comunicação via WhatsApp. Muito prático!",
+  "author": "@Zerolimitezoficial0",
+  "role": "Grupo Musical",
+  "stars": 5
+}
+
+CAMPOS EXPLICADOS:
+
+  text (obrigatório)
+    └─ O que o cliente disse sobre você
+    └─ Use ASPAS DUPLAS
+    └─ Exemplo: "Muito bom mesmo!"
+
+  author (obrigatório)
+    └─ Nome ou @ do cliente
+    └─ Exemplo: "@usuario" ou "João Silva"
+
+  role (obrigatório)
+    └─ Profissão/tipo do cliente
+    └─ Exemplos: "Artista", "Produtor", "Grupo Musical", "Rapper"
+
+  stars (obrigatório)
+    └─ Número de estrelas: 1, 2, 3, 4 ou 5
+    └─ Recomendação: use 4 ou 5 para avaliações positivas
+
+PASSO 3: Salvar e atualizar
+────────────────────────────
+
+1. Salve o beats-config.json
+2. Atualize a página (F5)
+3. Pronto! Avaliação aparece na seção "Avaliações"
+
+EXEMPLO:
+
+{
+  "text": "Ótimo beatmaker! Muito criativo e responsável!",
+  "author": "@novo_cliente",
+  "role": "Produtor Independente",
+  "stars": 5
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+
+7️⃣ PREÇOS CUSTOMIZADOS
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Você pode ter preços diferentes para CADA beat!
+
+PREÇOS PADRÃO (se não especificar):
+
+  RAP:
+    ├─ Não Exclusivo: R$ 24,90
+    └─ Exclusivo: R$ 129,90
+
+  TRAP:
+    ├─ Não Exclusivo: R$ 29,90
+    └─ Exclusivo: R$ 149,90
+
+  BOOMBAP:
+    ├─ Não Exclusivo: R$ 34,90
+    └─ Exclusivo: R$ 179,90
+
+COMO COLOCAR PREÇO CUSTOMIZADO:
+
+EXEMPLO 1: Beat com preço padrão (sem especificar)
+
+{
+  "filename": "beat1.mp3",
+  "name": "Beat Normal",
+  "genre": "trap",
+  "bpm": 140
+}
+
+↓ Usará: R$ 29,90 (não exclusivo) e R$ 149,90 (exclusivo)
+
+EXEMPLO 2: Beat com preço customizado (especificado)
+
+{
+  "filename": "beat2.mp3",
+  "name": "Beat Premium",
+  "genre": "trap",
+  "bpm": 140,
+  "price": {
+    "nonExclusive": 49.90,
+    "exclusive": 199.90
+  }
+}
+
+↓ Usará: R$ 49,90 (não exclusivo) e R$ 199,90 (exclusivo)
+
+QUANDO USAR PREÇOS CUSTOMIZADOS:
+
+✅ Beat mais criativo ou original
+✅ Beat com qualidade superior
+✅ Beat em alta demanda
+✅ Beat para artistas famosos
+✅ Você quer diferenciar preços
+
+═══════════════════════════════════════════════════════════════════════════════
+
+8️⃣ ESTRUTURA COMPLETA DO JSON
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Aqui está como o arquivo beats-config.json fica completo:
+
+{
+  "beatsForSale": [
+    {
+      "filename": "beat1.mp3",
+      "name": "Beat 1",
+      "genre": "trap",
+      "bpm": 140,
+      "price": {
+        "nonExclusive": 29.90,
+        "exclusive": 149.90
+      }
+    },
+    {
+      "filename": "beat2.mp3",
+      "name": "Beat 2",
+      "genre": "rap",
+      "bpm": 95
+    },
+    {
+      "filename": "beat3.mp3",
+      "name": "Beat 3",
+      "genre": "boombap",
+      "bpm": 85,
+      "price": {
+        "nonExclusive": 39.90,
+        "exclusive": 199.90
+      }
+    }
+  ],
+  "beatsDemos": [
+    {
+      "filename": "demo1.mp3",
+      "name": "Demo 1",
+      "genre": "trap",
+      "bpm": 150
+    },
+    {
+      "filename": "demo2.mp3",
+      "name": "Demo 2",
+      "genre": "rap",
+      "bpm": 92
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Profissional demais!",
+      "author": "@usuario1",
+      "role": "Artista",
+      "stars": 5
+    },
+    {
+      "text": "Muito bom!",
+      "author": "@usuario2",
+      "role": "Produtor",
+      "stars": 5
+    }
+  ]
+}
+
+REGRAS IMPORTANTES:
+
+1. Use VÍRGULAS entre objetos:
+
+   ✅ CORRETO:
+   {
+     "filename": "beat1.mp3",
+     "name": "Beat 1"
+   },
+   {
+     "filename": "beat2.mp3",
+     "name": "Beat 2"
+   }
+
+   ❌ ERRADO:
+   {
+     "filename": "beat1.mp3",
+     "name": "Beat 1"
+   }
+   {
+     "filename": "beat2.mp3",
+     "name": "Beat 2"
+   }
+
+2. Não deixe VÍRGULA no último objeto:
+
+   ✅ CORRETO:
+   [
+     {...},
+     {...}    ← sem vírgula aqui
+   ]
+
+   ❌ ERRADO:
+   [
+     {...},
+     {...},   ← vírgula aqui causa erro!
+   ]
+
+3. Use ASPAS DUPLAS em tudo
+
+4. Feche TODAS as chaves e colchetes
+
+═══════════════════════════════════════════════════════════════════════════════
+
+9️⃣ TROUBLESHOOTING
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PROBLEMA 1: Os beats não aparecem no site
+───────────────────────────────────────────
+
+Solução:
+
+1. Verifique se o arquivo está na pasta certa:
+   └─ recursos/sons/sell/ (para venda)
+   └─ recursos/sons/demo/ (para demo)
+
+2. Verifique se o filename está EXATO no JSON
+   └─ A pasta contém: "meu-beat.mp3"
+   └─ O JSON tem: "meu-beat.mp3" (IGUAL!)
+
+3. Valide o JSON em: https://jsonlint.com/
+   └─ Cole o conteúdo de beats-config.json
+   └─ Veja se há erros
+
+4. Limpe o cache do navegador (Ctrl+Shift+Del)
+
+5. Atualize a página (Ctrl+F5)
+
+PROBLEMA 2: JSON tem erro / portfólio não funciona
+────────────────────────────────────────────────────
+
+Solução:
+
+1. Abra https://jsonlint.com/
+2. Cole o conteúdo de beats-config.json
+3. Veja a mensagem de erro
+4. Procure por:
+   - Vírgulas faltando ou sobrando
+   - Aspas faltando
+   - Chaves não fechadas
+5. Corrija e tente novamente
+
+PROBLEMA 3: Preços não aparecem corretos
+──────────────────────────────────────────
+
+Solução:
+
+1. Verifique o campo "price" no JSON
+2. Use PONTO para decimal: 29.90 (não 29,90)
+3. Valide o JSON: https://jsonlint.com/
+
+PROBLEMA 4: Avaliações não aparecem
+─────────────────────────────────────
+
+Solução:
+
+1. Verifique se está na seção "testimonials"
+2. Verifique se tem todos os campos: text, author, role, stars
+3. Use ASPAS DUPLAS: "texto"
+4. Valide o JSON
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔟 PERGUNTAS FREQUENTES
+
+═══════════════════════════════════════════════════════════════════════════════
+
+P: Quantos beats posso ter?
+R: Ilimitados! Adicione quantos quiser no JSON.
+
+P: Preciso editar HTML ou CSS?
+R: NÃO! Nunca! Tudo é feito via JSON.
+
+P: Posso mudar as cores dos badges de gênero?
+R: Sim! Edit styles.css, procure por ".genre-badge"
+
+P: Posso adicionar mais gêneros?
+R: Sim! Edite script.js e adicione mais gêneros na lista.
+
+P: Os preços de compra são fáceis de mudar?
+R: SIM! É só editar o campo "price" no JSON.
+
+P: Como funciona o WhatsApp?
+R: Quando alguém clica em "Comprar", abre uma conversa no WhatsApp
+   com o nome do beat e o preço.
+
+P: Qual é o número do WhatsApp?
+R: Edit script.js, procure por WHATSAPP_NUMBER
+
+P: Como faço backup do JSON?
+R: Copie o arquivo beats-config.json para outro local seguro.
+
+P: Posso usar em outro computador?
+R: Sim! Copie a pasta inteira para outro lugar.
+
+P: Como atualizo as estatísticas (inscritos, views)?
+R: Edit script.js, procure por YOUTUBE_SUBSCRIBERS e YOUTUBE_VIEWS
+
+P: Onde fico as redes sociais?
+R: YouTube: https://www.youtube.com/@prod.izanagi
+   Instagram: https://www.instagram.com/prod.izanagi/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST: ADICIONAR UM NOVO BEAT À VENDA
+
+□ 1. Converter beat para MP3
+□ 2. Dê um nome descritivo: beat-genero-nome.mp3
+□ 3. Coloque na pasta: recursos/sons/sell/
+□ 4. Abra beats-config.json
+□ 5. Procure por "beatsForSale"
+□ 6. Copie um beat existente como template
+□ 7. Mude: filename, name, genre, bpm
+□ 8. (Opcional) Adicione field "price"
+□ 9. Adicione VÍRGULA após o beat anterior
+□ 10. Não coloque VÍRGULA no último beat
+□ 11. Valide JSON: https://jsonlint.com/
+□ 12. Salve o arquivo
+□ 13. Atualize a página (F5)
+□ 14. Verifique se o beat apareceu
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST: ADICIONAR UMA AVALIAÇÃO
+
+□ 1. Peça feedback ao cliente
+□ 2. Abra beats-config.json
+□ 3. Procure por "testimonials"
+□ 4. Copie uma avaliação existente
+□ 5. Mude: text, author, role, stars
+□ 6. Use ASPAS DUPLAS no texto
+□ 7. Adicione VÍRGULA após a anterior
+□ 8. Não coloque VÍRGULA na última
+□ 9. Valide JSON: https://jsonlint.com/
+□ 10. Salve o arquivo
+□ 11. Atualize a página (F5)
+□ 12. Verifique se apareceu
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 DICAS PRO:
+
+1. Sempre faça BACKUP do beats-config.json antes de editar
+   └─ Copie para outro local (Desktop, pendrive, nuvem)
+
+2. Use nomes descritivos nos arquivos
+   └─ ✅ beat-trap-agressivo.mp3
+   └─ ❌ beat1.mp3
+
+3. Mantenha o JSON formatado bonitinho
+   └─ Use indentação (espaços antes de chaves)
+   └─ Faz fácil encontrar erros
+
+4. Valide o JSON depois de cada edição
+   └─ Evita quebrar o portfólio
+
+5. Atualize os números de inscritos/views regularmente
+   └─ Deixa seu portfólio mais realista
+
+6. Use imagens de qualidade para os artistas
+   └─ Aumenta a profissionalidade
+
+7. Peça sempre avaliações aos clientes
+   └─ Aumenta a confiança
+
+8. Organize os beats por gênero
+   └─ Fica mais fácil de navegar
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 PRECISA DE AJUDA?
+
+Se algo não funcionar:
+
+1. Valide o JSON: https://jsonlint.com/
+2. Verifique nomes de arquivos
+3. Verifique se os arquivos existem nas pastas
+4. Limpe cache: Ctrl+Shift+Del
+5. Atualize: Ctrl+F5
+6. Abra Console (F12) e veja erros
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 PARABÉNS!
+
+Você agora sabe como gerenciar seu portfólio 100% automatizado!
+
+Seu sistema:
+✅ É simples de usar
+✅ Não precisa conhecer código
+✅ Escala para centenas de beats
+✅ É profissional e moderno
+✅ É totalmente personalizado
+
+SUCESSO TOTAL! 🚀🎵
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Última atualização: Janeiro 2026
+Versão: 1.0
+Criado com ❤️ para beatmakers
+
+═══════════════════════════════════════════════════════════════════════════════

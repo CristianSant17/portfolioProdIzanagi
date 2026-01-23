@@ -1,0 +1,52 @@
+{
+  "beatsForSale": [
+    {
+      "filename": "beat-trap-agressivo.mp3",
+      "name": "Trap Agressivo",
+      "genre": "trap",
+      "bpm": 140,
+      "price": {
+        "nonExclusive": 29.90,
+        "exclusive": 149.90
+      }
+    },
+    {
+      "filename": "beat-rap-profundo.mp3",
+      "name": "Rap Profundo",
+      "genre": "rap",
+      "bpm": 95
+    },
+    {
+      "filename": "beat-boombap-classico.mp3",
+      "name": "Boom Bap Clássico",
+      "genre": "boombap",
+      "bpm": 85,
+      "price": {
+        "nonExclusive": 39.90,
+        "exclusive": 199.90
+      }
+    }
+  ],
+  "beatsDemos": [
+    {
+      "filename": "aleatorios.mp3",
+      "name": "Demos Aleatórias",
+      "genre": "trap, rap, boombap, lo-fi",
+      "bpm": 150
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Profissional demais! Entrega rápida, beats criativos e a melhor parte é a comunicação via WhatsApp. Muito prático!",
+      "author": "@Zerolimitezoficial0",
+      "role": "Grupo Musical",
+      "stars": 5
+    },
+    {
+      "text": "Ainda não sei o que dizer",
+      "author": "@kmggeek",
+      "role": "Grupo Musical",
+      "stars": 5
+    }
+  ]
+}

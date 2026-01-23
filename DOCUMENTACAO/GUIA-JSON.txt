@@ -1,0 +1,336 @@
+📋 SISTEMA DE CONFIGURAÇÃO COM JSON
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ NOVO SISTEMA COMPLETO:
+
+Agora você pode controlar TUDO via JSON:
+  ✅ Beats à venda (nome, gênero, BPM)
+  ✅ Beats demo (nome, gênero, BPM)
+  ✅ Avaliações (texto, autor, estrelas)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📁 ARQUIVO ÚNICO DE CONFIGURAÇÃO:
+
+beats-config.json ← Controla TUDO!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 COMO USAR:
+
+1. Abra o arquivo "beats-config.json" na pasta do portfólio
+
+2. Você verá uma estrutura como essa:
+
+{
+  "beatsForSale": [...],
+  "beatsDemos": [...],
+  "testimonials": [...]
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 BEATS À VENDA
+
+➕ PARA ADICIONAR UM NOVO:
+
+{
+  "filename": "beat-novo.mp3",
+  "name": "Novo Beat Agressivo",
+  "genre": "trap",
+  "bpm": 145,
+  "price": {
+    "nonExclusive": 29.90,
+    "exclusive": 149.90
+  }
+}
+
+CAMPOS:
+  - filename: Nome do arquivo na pasta recursos/sons/sell/
+  - name: Nome bonito que aparece no site
+  - genre: Gênero (trap, rap, boombap)
+  - bpm: BPM do beat
+  - price: (OPCIONAL) Preço customizado
+    - nonExclusive: Preço não exclusivo
+    - exclusive: Preço exclusivo
+
+❗ Se você NÃO especificar "price", usará o padrão:
+  - RAP: R$ 24,90 / R$ 129,90
+  - TRAP: R$ 29,90 / R$ 149,90
+  - BOOMBAP: R$ 34,90 / R$ 179,90
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 BEATS DEMO
+
+➕ PARA ADICIONAR UM NOVO:
+
+{
+  "filename": "demo-novo.mp3",
+  "name": "Demo Novo Beat",
+  "genre": "rap",
+  "bpm": 95
+}
+
+CAMPOS:
+  - filename: Nome do arquivo na pasta recursos/sons/demo/
+  - name: Nome que aparece no site
+  - genre: Gênero (trap, rap, boombap)
+  - bpm: BPM do beat
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⭐ AVALIAÇÕES
+
+➕ PARA ADICIONAR UMA NOVA:
+
+{
+  "text": "Texto da avaliação aqui...",
+  "author": "@seu_usuario",
+  "role": "Artista / Produtor / Grupo Musical",
+  "stars": 5
+}
+
+CAMPOS:
+  - text: Avaliação do cliente (o que ele diz sobre você)
+  - author: Nome ou @ da pessoa
+  - role: Profissão/tipo (Artista, Produtor, Grupo Musical, etc)
+  - stars: Número de estrelas (1 a 5)
+
+EXEMPLO COMPLETO:
+
+{
+  "text": "Profissional demais! Entrega rápida, beats criativos e a melhor parte é a comunicação via WhatsApp. Muito prático!",
+  "author": "@Zerolimitezoficial0",
+  "role": "Grupo Musical",
+  "stars": 5
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 ESTRUTURA COMPLETA DO JSON:
+
+{
+  "beatsForSale": [
+    {
+      "filename": "beat1.mp3",
+      "name": "Meu Beat 1",
+      "genre": "trap",
+      "bpm": 140,
+      "price": {
+        "nonExclusive": 29.90,
+        "exclusive": 149.90
+      }
+    },
+    {
+      "filename": "beat2.mp3",
+      "name": "Meu Beat 2",
+      "genre": "rap",
+      "bpm": 95,
+      "price": {
+        "nonExclusive": 19.90,
+        "exclusive": 99.90
+      }
+    },
+    {
+      "filename": "beat3.mp3",
+      "name": "Meu Beat 3",
+      "genre": "boombap",
+      "bpm": 85
+    }
+  ],
+  "beatsDemos": [
+    {
+      "filename": "demo1.mp3",
+      "name": "Demo 1",
+      "genre": "trap",
+      "bpm": 150
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Ótimo beatmaker!",
+      "author": "@usuario1",
+      "role": "Artista",
+      "stars": 5
+    },
+    {
+      "text": "Muito bom mesmo!",
+      "author": "@usuario2",
+      "role": "Produtor",
+      "stars": 5
+    }
+  ]
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💰 PREÇOS CUSTOMIZADOS:
+
+Você pode definir preços específicos para CADA beat no JSON!
+
+EXEMPLO SEM PREÇO CUSTOMIZADO (usa padrão):
+{
+  "filename": "beat1.mp3",
+  "name": "Meu Beat",
+  "genre": "trap",
+  "bpm": 140
+}
+
+EXEMPLO COM PREÇO CUSTOMIZADO:
+{
+  "filename": "beat1.mp3",
+  "name": "Meu Beat Premium",
+  "genre": "trap",
+  "bpm": 140,
+  "price": {
+    "nonExclusive": 49.90,
+    "exclusive": 199.90
+  }
+}
+
+PREÇOS PADRÃO (se não especificar):
+  RAP: R$ 24,90 / R$ 129,90
+  TRAP: R$ 29,90 / R$ 149,90
+  BOOMBAP: R$ 34,90 / R$ 179,90
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎵 GÊNEROS DISPONÍVEIS:
+
+- trap
+- rap
+- boombap
+
+(Use exatamente assim, em minúsculas!)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💰 PREÇOS AUTOMÁTICOS POR GÊNERO:
+
+RAP:
+  ├─ Não Exclusivo: R$ 24,90
+  └─ Exclusivo: R$ 129,90
+
+TRAP:
+  ├─ Não Exclusivo: R$ 29,90
+  └─ Exclusivo: R$ 149,90
+
+BOOM BAP:
+  ├─ Não Exclusivo: R$ 34,90
+  └─ Exclusivo: R$ 179,90
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ REGRAS IMPORTANTES DO JSON:
+
+1. Use VÍRGULAS entre objetos:
+   
+   ✅ CORRETO:
+   {
+     "filename": "beat1.mp3",
+     "name": "Beat 1"
+   },
+   {
+     "filename": "beat2.mp3",
+     "name": "Beat 2"
+   }
+   
+   ❌ ERRADO:
+   {
+     "filename": "beat1.mp3",
+     "name": "Beat 1"
+   }
+   {
+     "filename": "beat2.mp3",
+     "name": "Beat 2"
+   }
+
+2. Não deixe vírgula no último objeto:
+   
+   ✅ CORRETO:
+   [
+     {...},
+     {...}    ← sem vírgula aqui
+   ]
+   
+   ❌ ERRADO:
+   [
+     {...},
+     {...},   ← vírgula aqui causa erro
+   ]
+
+3. Use aspas duplas em todas as chaves e valores string
+
+4. Feche todas as chaves e colchetes corretamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST PARA ADICIONAR UM NOVO BEAT:
+
+1. ☐ Converter o beat para MP3
+2. ☐ Colocar na pasta correta
+3. ☐ Abrir beats-config.json
+4. ☐ Adicionar o novo beat com: filename, name, genre, bpm
+5. ☐ Verificar sintaxe (vírgulas, aspas)
+6. ☐ Salvar
+7. ☐ Atualizar a página
+8. ☐ Verificar se apareceu corretamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST PARA ADICIONAR UMA AVALIAÇÃO:
+
+1. ☐ Receber feedback do cliente
+2. ☐ Abrir beats-config.json
+3. ☐ Adicionar nova avaliação com: text, author, role, stars
+4. ☐ Verificar sintaxe (vírgulas, aspas)
+5. ☐ Salvar
+6. ☐ Atualizar a página
+7. ☐ Verificar se apareceu corretamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔍 VALIDAR JSON:
+
+Se algo não aparecer, o JSON pode estar com erro!
+
+Use um validador online:
+https://jsonlint.com/
+
+Cole o conteúdo de beats-config.json e procure erros!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 FALLBACK AUTOMÁTICO:
+
+Se beats-config.json não existir ou tiver erro:
+- Sistema tenta carregar das pastas
+- Se tudo falhar, mostra mensagem de instrução
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 DICAS:
+
+1. Sempre faça backup antes de editar
+2. Mantenha nomes simples (sem caracteres especiais)
+3. Use BPM reais
+4. Escolha gêneros corretamente (afeta preço)
+5. Avaliações de clientes aumentam confiança
+6. Atualize avaliações regularmente
+7. Você pode ter quantas avaliações quiser
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 RESULTADO:
+
+Sistema 100% customizável com um único arquivo!
+
+✅ Controle total sobre beats e avaliações
+✅ Sem código para editar
+✅ Escalável para 100+ beats
+✅ Fácil de manter e atualizar
+✅ Gerenciamento centralizado
+
+═══════════════════════════════════════════════════════════════════════════════

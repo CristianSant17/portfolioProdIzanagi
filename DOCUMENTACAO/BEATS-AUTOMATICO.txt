@@ -1,0 +1,235 @@
+🎵 SISTEMA AUTOMÁTICO DE BEATS - DOCUMENTAÇÃO COMPLETA
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ NOVIDADES IMPLEMENTADAS:
+
+1. 📊 ESTATÍSTICAS COM ANIMAÇÕES
+   └─ 460 Inscritos no YouTube (com link clicável)
+   └─ +70.000 Views em Produções Vendidas
+   └─ Números animados (contagem crescente) com transição suave
+
+2. 🎯 SISTEMA AUTOMÁTICO DE BEATS À VENDA
+   └─ Lê automaticamente os arquivos de recursos/sons/sell/
+   └─ Cria cards para cada beat sem você adicionar manualmente
+
+3. 🎧 SISTEMA AUTOMÁTICO DE BEATS DEMO
+   └─ Lê automaticamente os arquivos de recursos/sons/demo/
+   └─ Cria cards para cada beat de demonstração
+
+4. 🔗 LINKS ATUALIZADOS
+   └─ YouTube: https://www.youtube.com/@prod.izanagi
+   └─ Instagram: https://www.instagram.com/prod.izanagi/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📁 ESTRUTURA DE PASTAS NECESSÁRIA:
+
+recursos/
+├── imagens/
+│   └─ (fotos dos artistas)
+└── sons/
+    ├── sell/          ← Coloque aqui seus beats à venda
+    │   ├── beat1.mp3
+    │   ├── beat2.mp3
+    │   └── beat3.mp3
+    └── demo/          ← Coloque aqui seus beats de demo
+        ├── demo1.mp3
+        ├── demo2.mp3
+        └── demo3.mp3
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 COMO USAR (SUPER FÁCIL):
+
+PASSO 1: Criar as pastas
+────────────────────────
+
+1. Acesse a pasta: recursos/sons/
+2. Crie 2 pastas:
+   └─ sell    (para beats à venda)
+   └─ demo    (para beats de demonstração)
+
+PASSO 2: Adicionar seus beats
+──────────────────────────────
+
+1. Converta seus beats para MP3
+2. Coloque os arquivos nas pastas corretas:
+   └─ beats à venda → recursos/sons/sell/
+   └─ beats demo → recursos/sons/demo/
+
+3. Nomeia os arquivos assim (recomendado):
+   └─ beat-01-trap-storm.mp3
+   └─ beat-02-boom-bap-classic.mp3
+   └─ beat-03-rap-vibes.mp3
+
+PASSO 3: PRONTO! ✅
+──────────────────
+
+Quando você abrir a página, os beats aparecem automaticamente!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 COMO FUNCIONA:
+
+1. JavaScript lê a pasta recursos/sons/sell/
+2. Para cada arquivo .mp3, cria um card com:
+   └─ Nome do beat (extrai do nome do arquivo)
+   └─ Gênero (alterna entre Trap, Rap, Boom Bap)
+   └─ BPM (varia automático)
+   └─ Player de áudio
+   └─ 2 opções de preço (Não Exclusivo + Exclusivo)
+   └─ Botão de compra WhatsApp
+
+O mesmo acontece para beats de demo!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💰 PRECIFICAÇÃO AUTOMÁTICA:
+
+RAP:
+  ├─ Não Exclusivo: R$ 24,90
+  └─ Exclusivo: R$ 129,90
+
+TRAP:
+  ├─ Não Exclusivo: R$ 29,90
+  └─ Exclusivo: R$ 149,90
+
+BOOM BAP:
+  ├─ Não Exclusivo: R$ 34,90
+  └─ Exclusivo: R$ 179,90
+
+Os preços são atribuídos automaticamente conforme o gênero!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 ESTATÍSTICAS CONFIGURÁVEIS:
+
+No arquivo script.js, você pode alterar:
+
+// Número de inscritos (com link clicável)
+const YOUTUBE_SUBSCRIBERS = 460;
+
+// Views em produções vendidas
+const YOUTUBE_VIEWS = 70000;
+
+// Links das redes sociais
+const YOUTUBE_CHANNEL = 'https://www.youtube.com/@prod.izanagi';
+const INSTAGRAM_PROFILE = 'https://www.instagram.com/prod.izanagi/';
+
+Altere esses números conforme sua realidade!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ ANIMAÇÕES:
+
+Quando a página carrega, você vê:
+
+480 → 460 (conta regressiva dos inscritos)
+0 → 70.000 (conta crescente das views)
+
+Com transição suave e dinâmica! 🎬
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔄 MANUTENÇÃO:
+
+Para ADICIONAR um novo beat:
+1. Converta para MP3
+2. Coloque na pasta certa (sell ou demo)
+3. Pronto! Aparece automaticamente
+
+Para REMOVER um beat:
+1. Delete o arquivo da pasta
+2. Pronto! Desaparece automaticamente
+
+Para MUDAR PREÇO:
+1. Edite script.js, procure as variáveis de preço
+2. Altere os valores
+3. Pronto!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚙️ FUNCIONAMENTO TÉCNICO:
+
+Funções JavaScript:
+
+1. loadBeatsForSale()
+   └─ Busca arquivos em recursos/sons/sell/
+   └─ Cria cards automaticamente
+
+2. loadBeatsDemos()
+   └─ Busca arquivos em recursos/sons/demo/
+   └─ Cria cards automaticamente
+
+3. animateCounter()
+   └─ Anima os números das estatísticas
+   └─ Faz contagem crescente
+
+4. initializeStats()
+   └─ Inicializa estatísticas e links
+   └─ Executa ao carregar a página
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ IMPORTANTE:
+
+Se os beats não aparecerem:
+
+1. Verifique se os arquivos estão nas pastas certas:
+   └─ recursos/sons/sell/
+   └─ recursos/sons/demo/
+
+2. Verifique se são arquivos .mp3
+
+3. Verifique se os nomes estão corretos (sem caracteres especiais)
+
+4. Abra o Console (F12) e procure por erros
+
+5. Se CORS bloquear, use o modo fallback (lista manual)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 RESPONSIVIDADE:
+
+Os cards aparecem em grid responsivo:
+  ├─ Desktop: 3-4 cards por linha
+  ├─ Tablet: 2 cards por linha
+  └─ Mobile: 1 card por linha
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 RESULTADO FINAL:
+
+Seu portfólio agora é 100% automatizado!
+
+Você NUNCA MAIS precisa:
+✅ Adicionar beats manualmente
+✅ Editar HTML
+✅ Mexer em código
+
+Basta colocar os arquivos nas pastas certas e pronto! 🚀
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 DICAS PROFISSIONAIS:
+
+1. Use nomes descritivos: "beat-01-trap-agressivo.mp3"
+2. Qualidade MP3: 128-192 kbps é ideal
+3. Mantenha a pasta sync com seus beats
+4. Atualize números de views periodicamente
+5. Use qualidade alta nos arquivos de audio
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 VOCÊ ESTÁ 100% PRONTO!
+
+Seu portfólio é agora:
+✅ Automático
+✅ Profissional
+✅ Escalável
+✅ Fácil de manter
+
+Parabéns! 🎵💰
+
+═══════════════════════════════════════════════════════════════════════════════
