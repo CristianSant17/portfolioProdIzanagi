@@ -17,6 +17,43 @@ const YOUTUBE_SUBSCRIBERS = 460;
 const YOUTUBE_VIEWS = 70000;
 
 // ============================================
+// MENU HAMBÚRGUER RESPONSIVO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (hamburger && navMenu) {
+        // Toggle menu quando clicar no hambúrguer
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Fechar menu quando clicar em um link
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Fechar menu quando clicar fora
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+});
+
+// ============================================
 // ANIMAÇÃO DE NÚMEROS (COUNTER)
 // ============================================
 
