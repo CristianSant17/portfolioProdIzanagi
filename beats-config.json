@@ -9,22 +9,6 @@
         "nonExclusive": 29.90,
         "exclusive": 149.90
       }
-    },
-    {
-      "filename": "beat-rap-profundo.mp3",
-      "name": "Rap Profundo",
-      "genre": "rap",
-      "bpm": 95
-    },
-    {
-      "filename": "beat-boombap-classico.mp3",
-      "name": "Boom Bap Clássico",
-      "genre": "boombap",
-      "bpm": 85,
-      "price": {
-        "nonExclusive": 39.90,
-        "exclusive": 199.90
-      }
     }
   ],
   "beatsDemos": [
@@ -32,7 +16,7 @@
       "filename": "aleatorios.mp3",
       "name": "Demos Aleatórias",
       "genre": "trap, rap, boombap, lo-fi",
-      "bpm": 150
+      "bpm": "NÃO FOI DEFINIDO O"
     }
   ],
   "testimonials": [
