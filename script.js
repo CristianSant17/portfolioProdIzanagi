@@ -17,6 +17,26 @@ const YOUTUBE_SUBSCRIBERS = 460;
 const YOUTUBE_VIEWS = 70000;
 
 // ============================================
+// SPLASH SCREEN
+// ============================================
+
+window.addEventListener('load', function() {
+    const splashScreen = document.getElementById('splash-screen');
+    
+    if (splashScreen) {
+        // Remover splash screen após 3.3 segundos (2.5s animação + 0.8s fade out)
+        setTimeout(function() {
+            splashScreen.classList.add('hidden');
+        }, 3000);
+        
+        // Permitir fechar o splash ao clicar
+        splashScreen.addEventListener('click', function() {
+            splashScreen.classList.add('hidden');
+        });
+    }
+});
+
+// ============================================
 // MENU HAMBÚRGUER RESPONSIVO
 // ============================================
 

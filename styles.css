@@ -53,16 +53,116 @@ audio::-webkit-media-controls-volume-slider {
 }
 
 /* ============================================
+   SPLASH SCREEN / INTRO ANIMATION
+   ============================================ */
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--tertiary) 100%);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: splashFadeOut 0.8s ease-in-out forwards;
+    animation-delay: 2.5s;
+}
+
+.splash-screen.hidden {
+    display: none;
+}
+
+.splash-content {
+    text-align: center;
+    animation: splashScale 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.splash-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    animation: splashBounce 1.5s ease-in-out infinite;
+    border: 3px solid var(--primary-dark);
+}
+
+.splash-text {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: 3px;
+    animation: splashTextFade 1.2s ease-in-out;
+}
+
+.splash-subtitle {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 2px;
+    animation: splashTextFade 1.2s ease-in-out 0.3s backwards;
+}
+
+@keyframes splashScale {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes splashBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes splashTextFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes splashFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* ============================================
    HEADER E NAVEGAÇÃO
    ============================================ */
 
 .header {
-    background-color: var(--secondary);
-    border-bottom: 1px solid var(--border-color);
+    background: rgba(25, 20, 20, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(64, 64, 64, 0.3);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.6s ease-out;
 }
 
 .navbar {
@@ -1025,16 +1125,18 @@ audio::-webkit-media-controls-volume-slider {
 }
 
 .beat-modal-content {
-    background: linear-gradient(135deg, var(--tertiary) 0%, rgba(29, 91, 185, 0.05) 100%);
-    border: 2px solid var(--primary-dark);
-    border-radius: 15px;
+    background: rgba(40, 40, 40, 0.8);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(64, 64, 64, 0.4);
+    border-radius: 20px;
     padding: 2.5rem;
     max-width: 550px;
     width: 100%;
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    animation: modalSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .beat-modal-close {
@@ -1139,6 +1241,127 @@ audio::-webkit-media-controls-volume-slider {
     flex: 1;
     padding: 1rem;
     font-size: 1rem;
+}
+
+/* ============================================
+   KEYFRAMES E ANIMAÇÕES
+   ============================================ */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(29, 123, 185, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(29, 123, 185, 0.6);
+    }
+}
+
+.production-card,
+.beat-card,
+.demo-card,
+.testimonial-card,
+.stat-card {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.production-card:nth-child(1) { animation-delay: 0.1s; }
+.production-card:nth-child(2) { animation-delay: 0.2s; }
+.production-card:nth-child(3) { animation-delay: 0.3s; }
+.beat-card:nth-child(1) { animation-delay: 0.1s; }
+.beat-card:nth-child(2) { animation-delay: 0.2s; }
+.beat-card:nth-child(3) { animation-delay: 0.3s; }
+.demo-card:nth-child(1) { animation-delay: 0.1s; }
+.demo-card:nth-child(2) { animation-delay: 0.2s; }
+.demo-card:nth-child(3) { animation-delay: 0.3s; }
+.testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+.testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+.testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(1) { animation-delay: 0.2s; }
+.stat-card:nth-child(2) { animation-delay: 0.4s; }
+
+.production-card:hover,
+.beat-card:hover,
+.demo-card:hover,
+.testimonial-card:hover,
+.contact-item:hover {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.artist-icon:hover img {
+    animation: scaleIn 0.3s ease-out;
+}
+
+.section-header h2 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.section-header p {
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
 }
 
 /* ============================================
