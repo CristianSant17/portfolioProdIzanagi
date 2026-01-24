@@ -1,22 +1,122 @@
 {
   "beatsForSale": [
     {
-      "filename": "beat-trap-agressivo.mp3",
-      "name": "Trap Agressivo",
-      "genre": "trap",
-      "bpm": 140,
+      "filename": "DinheiroDemo.mp3",
+      "name": "Dinheiro - Beat Completo",
+      "genre": "boombap",
+      "bpm": "82",
       "price": {
-        "nonExclusive": 29.90,
-        "exclusive": 149.90
+        "nonExclusive": 50.00,
+        "exclusive": 100.00
+      }
+    },
+    {
+      "filename": "Block.mp3",
+      "name": "Block - Beat Completo",
+      "genre": "boombap",
+      "bpm": "90",
+      "price": {
+        "nonExclusive": 40.00,
+        "exclusive": 80.00
+      }
+    },
+    {
+      "filename": "japaneseDemo.mp3",
+      "name": "Japanese - Beat Completo",
+      "genre": "rap",
+      "bpm": "100",
+      "price": {
+        "nonExclusive": 60.00,
+        "exclusive": 120.00
+      }
+    },
+    {
+      "filename": "LuzDemo.mp3",
+      "name": "Luz - Beat Completo",
+      "genre": "rap",
+      "bpm": "125",
+      "price": {
+        "nonExclusive": 60.00,
+        "exclusive": 120.00
+      }
+    },
+    {
+      "filename": "PoleDanceDemo.mp3",
+      "name": "Pole Dance - Beat Completo",
+      "genre": "trap",
+      "bpm": "130",
+      "price": {
+        "nonExclusive": 25.00,
+        "exclusive": 60.00
+      }
+    },
+    {
+      "filename": "RomaDemo.mp3",
+      "name": "Roma - Beat Completo",
+      "genre": "trap",
+      "bpm": "120",
+      "price": {
+        "nonExclusive": 50.00,
+        "exclusive": 100.00
+      }
+    },
+    {
+      "filename": "VibeDemo.mp3",
+      "name": "Vibe - Beat Completo",
+      "genre": "rap",
+      "bpm": "110",
+      "price": {
+        "nonExclusive": 20.00,
+        "exclusive": 80.00
+      }
+    },
+    {
+      "filename": "StringDemo.mp3",
+      "name": "String - Beat Completo",
+      "genre": "trap",
+      "bpm": "130",
+      "price": {
+        "nonExclusive": 30.00,
+        "exclusive": 75.00
       }
     }
   ],
   "beatsDemos": [
     {
-      "filename": "aleatorios.mp3",
-      "name": "Demos Aleatórias",
+      "filename": "BravosDemo.mp3",
+      "name": "Bravos Demonstração",
+      "genre": "rap",
+      "bpm": "130"
+    },
+    {
+      "filename": "ReferênciasDemo.mp3",
+      "name": "Referências - Beat Completo",
       "genre": "trap",
-      "bpm": "NÃO FOI DEFINIDO O"
+      "bpm": "88"
+    },
+    {
+      "filename": "NextDemo.mp3",
+      "name": "Next - Beat Completo",
+      "genre": "rap",
+      "bpm": "120"
+    },
+    {
+      "filename": "ReisDemo.mp3",
+      "name": "Reis - Beat Completo",
+      "genre": "rap",
+      "bpm": "128"
+    },
+    {
+      "filename": "SintéticoDemo.mp3",
+      "name": "Sintético - Beat Completo",
+      "genre": "rap",
+      "bpm": "120"
+    },
+    {
+      "filename": "SusanoDemo.mp3",
+      "name": "Susano - Beat Completo",
+      "genre": "trap",
+      "bpm": "120"
     }
   ],
   "testimonials": [
@@ -27,9 +127,45 @@
       "stars": 5
     },
     {
-      "text": "Ainda não sei o que dizer",
-      "author": "@kmggeek",
-      "role": "Grupo Musical",
+      "text": "Qualidade absurda. O beat veio limpo, bem mixado e pronto pra gravar. Com certeza vou pegar mais.",
+      "author": "@KMGgeek",
+      "role": "Artista Independente",
+      "stars": 5
+    },
+    {
+      "text": "Curti demais o cuidado nos detalhes. Dá pra sentir que não é beat genérico.",
+      "author": "@prod_sombra",
+      "role": "Rapper",
+      "stars": 4
+    },
+    {
+      "text": "Atendimento rápido e sem enrolação. Pedi ajuste e foi resolvido na hora.",
+      "author": "@anonimo_rap01",
+      "role": "Artista Independente",
+      "stars": 5
+    },
+    {
+      "text": "Beats pesados, bpm certinho e vibe profissional. Recomendo fácil.",
+      "author": "@beatlover_br",
+      "role": "Criador de Conteúdo",
+      "stars": 4
+    },
+    {
+      "text": "Comprei sem muita expectativa e me surpreendi. Qualidade de estúdio.",
+      "author": "@anonimo.trap",
+      "role": "Cantor",
+      "stars": 5
+    },
+    {
+      "text": "Já trampei com vários produtores e esse aqui tá em outro nível.",
+      "author": "@MC_Night",
+      "role": "MC",
+      "stars": 5
+    },
+    {
+      "text": "Processo simples, rápido e o beat veio exatamente como eu imaginava.",
+      "author": "@anon_artist23",
+      "role": "Artista Independente",
       "stars": 5
     }
   ]
