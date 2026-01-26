@@ -178,7 +178,7 @@ audio::-webkit-media-controls-volume-slider {
     padding: 0.5rem;
     font-weight: 600;
     font-size: 0.95rem;
-    margin: -10px 0 10px 0;
+    margin: -10px;
 }
 
 .navbar {
