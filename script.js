@@ -352,14 +352,14 @@ function createDemoCard(name, genre, bpm, filename, description) {
     const genreClass = genreLower === 'boombap' ? 'boombap' : genreLower;
     
     // Se não houver descrição, criar uma genérica
-    const desc = description || `Beat ${genre.toUpperCase()} a ${bpm} BPM. Perfeito para suas produções!`;
+    const desc = description || `Beat estilo ${genre.toUpperCase()} a ${bpm} BPM. Perfeito para suas produções!`;
     
     card.innerHTML = `
         <h3>${name}</h3>
         <p class="genre-badge ${genreClass}">${genre.toUpperCase()}</p>
         <p class="bpm"><i class="fas fa-drum"></i> ${bpm} BPM</p>
         <audio controls>
-            <source src="recursos/sons/demo/${filename}" type="audio/mpeg">
+            <source src="recursos/sons/demo/${filename}" type="audio/mp3">
         </audio>
         <p class="demo-description">${desc}</p>
     `;
