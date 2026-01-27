@@ -441,7 +441,12 @@ async function loadYoutubeCarousel() {
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
                 slide.innerHTML = `
-                    <a class="youtube-slide-link" href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer">
+                    <button 
+                        type="button" 
+                        class="youtube-slide-link" 
+                        data-video-id="${videoId}"
+                        data-video-title="${title.replace(/"/g, '&quot;')}"
+                    >
                         <div class="youtube-thumb">
                             ${thumb ? `<img src="${thumb}" alt="${title}">` : ''}
                             <div class="youtube-thumb-overlay">
@@ -449,7 +454,7 @@ async function loadYoutubeCarousel() {
                             </div>
                         </div>
                         <h3 class="youtube-title">${title}</h3>
-                    </a>
+                    </button>
                 `;
                 wrapper.appendChild(slide);
 
@@ -459,6 +464,15 @@ async function loadYoutubeCarousel() {
 
         if (index > 0) {
             initSwiper();
+
+            // Ativar modal para cada slide
+            document.querySelectorAll('.youtube-slide-link').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const videoId = btn.getAttribute('data-video-id');
+                    const title = btn.getAttribute('data-video-title') || 'Vídeo';
+                    openYoutubeModal(videoId, title);
+                });
+            });
         }
     } catch (err) {
         console.error('Erro inesperado ao carregar carrossel do YouTube:', err);
@@ -480,6 +494,82 @@ function initSwiper() {
             1024: { slidesPerView: 3.2 }
         }
     });
+}
+
+// ============================================
+// MODAL YOUTUBE PLAYER
+// ============================================
+
+function openYoutubeModal(videoId, title) {
+    if (!videoId) return;
+
+    let modal = document.getElementById('youtubeModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'youtubeModal';
+        modal.className = 'youtube-modal';
+        modal.innerHTML = `
+            <div class="youtube-modal-content">
+                <div class="youtube-modal-player-wrapper">
+                    <iframe 
+                        id="youtubeModalIframe"
+                        src=""
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <h3 class="youtube-modal-title" id="youtubeModalTitle"></h3>
+            </div>
+
+            <button class="youtube-modal-close" type="button">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        document.body.appendChild(modal);
+
+        // Fechar ao clicar no X
+        modal.querySelector('.youtube-modal-close').addEventListener('click', closeYoutubeModal);
+
+        // Fechar ao clicar fora do conteúdo
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeYoutubeModal();
+            }
+        });
+
+        // Fechar com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeYoutubeModal();
+            }
+        });
+    }
+
+    const iframe = document.getElementById('youtubeModalIframe');
+    const titleEl = document.getElementById('youtubeModalTitle');
+
+    if (iframe) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+    if (titleEl) {
+        titleEl.textContent = title;
+    }
+
+    modal.classList.add('active');
+}
+
+function closeYoutubeModal() {
+    const modal = document.getElementById('youtubeModal');
+    const iframe = document.getElementById('youtubeModalIframe');
+    if (iframe) {
+        // limpar src para parar o vídeo
+        iframe.src = '';
+    }
+    if (modal) {
+        modal.classList.remove('active');
+    }
 }
 
 
