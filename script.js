@@ -7,8 +7,8 @@ const WHATSAPP_NUMBER = '5577998454572'; // Formato: 55 + DDD + Número (sem car
 
 // 🟡 IMPORTANTE: Configure o ID da sua playlist do YouTube
 // Como pegar: Acesse sua playlist, copie a URL e procure por: list=ISSO_AQUI_E_O_ID
-const YOUTUBE_PLAYLIST_ID = 'PL9IhNkgdzwWEFXDri161mEqyzuail9S7M&si=ev0F2BAPeKyr-mIT';
-const YOUTUBE_API_KEY = 'CONFIGURE_SUA_CHAVE_AQUI'; // Veja o arquivo SETUP-YOUTUBE-API.txt
+const YOUTUBE_PLAYLIST_ID = 'PL9IhNkgdzwWEFXDri161mEqyzuail9S7M';
+const YOUTUBE_API_KEY = 'AIzaSyCXp4vnEH8nEZLTjpyLeRPl__CSdJsP2DM'; // Veja o arquivo SETUP-YOUTUBE-API.txt
 
 // 🔗 REDES SOCIAIS
 const YOUTUBE_CHANNEL = 'https://www.youtube.com/@prod.izanagi';
@@ -20,17 +20,17 @@ const YOUTUBE_VIEWS = 70000;
 // SPLASH SCREEN
 // ============================================
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const splashScreen = document.getElementById('splash-screen');
-    
+
     if (splashScreen) {
         // Remover splash screen após 3.3 segundos (2.5s animação + 0.8s fade out)
-        setTimeout(function() {
+        setTimeout(function () {
             splashScreen.classList.add('hidden');
         }, 3000);
-        
+
         // Permitir fechar o splash ao clicar
-        splashScreen.addEventListener('click', function() {
+        splashScreen.addEventListener('click', function () {
             splashScreen.classList.add('hidden');
         });
     }
@@ -40,31 +40,31 @@ window.addEventListener('load', function() {
 // MENU HAMBÚRGUER RESPONSIVO
 // ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
-    
+
     if (hamburger && navMenu) {
         // Toggle menu quando clicar no hambúrguer
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', function () {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Fechar menu quando clicar em um link
         const navLinks = navMenu.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
             });
         });
-        
+
         // Fechar menu quando clicar fora
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const isClickInsideNav = navMenu.contains(event.target);
             const isClickOnHamburger = hamburger.contains(event.target);
-            
+
             if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
@@ -80,12 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function animateCounter(element, finalValue, duration = 2000) {
     const startValue = 0;
     const startTime = Date.now();
-    
+
     function updateCounter() {
         const elapsedTime = Date.now() - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
         const currentValue = Math.floor(startValue + (finalValue - startValue) * progress);
-        
+
         // Formatar número
         if (finalValue > 1000) {
             if (currentValue >= 1000) {
@@ -96,12 +96,12 @@ function animateCounter(element, finalValue, duration = 2000) {
         } else {
             element.textContent = currentValue.toLocaleString();
         }
-        
+
         if (progress < 1) {
             requestAnimationFrame(updateCounter);
         }
     }
-    
+
     updateCounter();
 }
 
@@ -115,20 +115,20 @@ function initializeStats() {
     if (subscribersElement) {
         animateCounter(subscribersElement, YOUTUBE_SUBSCRIBERS, 5500);
     }
-    
+
     // YouTube Views
     const viewsElement = document.getElementById('youtube-views');
     if (viewsElement) {
         animateCounter(viewsElement, YOUTUBE_VIEWS, 5500);
     }
-    
+
     // Links YouTube
     const youtubeLinks = document.querySelectorAll('[data-youtube-link]');
     youtubeLinks.forEach(link => {
         link.href = YOUTUBE_CHANNEL;
         link.target = '_blank';
     });
-    
+
     // Links Instagram
     const instagramLinks = document.querySelectorAll('[data-instagram-link]');
     instagramLinks.forEach(link => {
@@ -163,11 +163,11 @@ async function loadBeatsFromConfig() {
 async function loadBeatsForSale() {
     const container = document.getElementById('beats-grid');
     if (!container) return;
-    
+
     try {
         // Tentar carregar do JSON primeiro
         const config = await loadBeatsFromConfig();
-        
+
         if (config && config.beatsForSale && config.beatsForSale.length > 0) {
             container.innerHTML = '';
             config.beatsForSale.forEach((beat, index) => {
@@ -180,44 +180,44 @@ async function loadBeatsForSale() {
             });
             return;
         }
-        
+
         // Se não houver config, tentar buscar da pasta
         const response = await fetch('recursos/sons/sell/');
-        
+
         if (!response.ok) {
             loadBeatsForSaleManual(container);
             return;
         }
-        
+
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const links = doc.querySelectorAll('a[href$=".mp3"]');
-        
+
         if (links.length === 0) {
             loadBeatsForSaleManual(container);
             return;
         }
-        
+
         container.innerHTML = '';
-        
+
         let beatIndex = 1;
         links.forEach(link => {
             const filename = link.textContent.trim();
             const beatName = filename.replace('.mp3', '').replace(/[-_]/g, ' ');
-            
+
             const genres = ['trap', 'rap', 'boombap'];
             const genre = genres[beatIndex % genres.length];
             const bpms = [140, 95, 85, 150];
             const bpm = bpms[beatIndex % bpms.length];
             const keys = ['C', 'D', 'E', 'F'];
             const key = keys[beatIndex % keys.length];
-            
+
             const card = createBeatCard(beatName, genre, bpm, key, filename, beatIndex);
             container.appendChild(card);
             beatIndex++;
         });
-        
+
     } catch (error) {
         console.error('Erro ao carregar beats:', error);
         loadBeatsForSaleManual(container);
@@ -227,20 +227,20 @@ async function loadBeatsForSale() {
 function createBeatCard(name, genre, bpm, key, filename, index, customPrice = null) {
     const card = document.createElement('div');
     card.className = 'beat-card';
-    
+
     const genreLower = genre.toLowerCase();
     const genreClass = genreLower === 'boombap' ? 'boombap' : genreLower;
-    
+
     // Preços padrão por gênero
     const defaultPrices = {
         rap: { nonExclusive: 24.90, exclusive: 129.90 },
         trap: { nonExclusive: 29.90, exclusive: 149.90 },
         boombap: { nonExclusive: 34.90, exclusive: 179.90 }
     };
-    
+
     // Usar preço customizado (do JSON) ou padrão
     const price = customPrice || defaultPrices[genreLower] || defaultPrices['trap'];
-    
+
     card.innerHTML = `
         <div class="beat-image"></div>
         <div class="beat-info">
@@ -269,7 +269,7 @@ function createBeatCard(name, genre, bpm, key, filename, index, customPrice = nu
             </div>
         </div>
     `;
-    
+
     return card;
 }
 
@@ -292,11 +292,11 @@ function loadBeatsForSaleManual(container) {
 async function loadBeatsDemos() {
     const container = document.getElementById('demo-grid');
     if (!container) return;
-    
+
     try {
         // Tentar carregar do JSON primeiro
         const config = await loadBeatsFromConfig();
-        
+
         if (config && config.beatsDemos && config.beatsDemos.length > 0) {
             container.innerHTML = '';
             config.beatsDemos.forEach((beat, index) => {
@@ -305,44 +305,44 @@ async function loadBeatsDemos() {
             });
             return;
         }
-        
+
         // Se não houver config, tentar buscar da pasta
         const response = await fetch('recursos/sons/demo/');
-        
+
         if (!response.ok) {
             loadBeatsdemosManual(container);
             return;
         }
-        
+
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const links = doc.querySelectorAll('a[href$=".mp3"]');
-        
+
         if (links.length === 0) {
             loadBeatsdemosManual(container);
             return;
         }
-        
+
         container.innerHTML = '';
-        
+
         let demoIndex = 1;
         links.forEach(link => {
             const filename = link.textContent.trim();
             const beatName = filename.replace('.mp3', '').replace(/[-_]/g, ' ');
-            
+
             const genres = ['trap', 'boombap', 'rap'];
             const genre = genres[demoIndex % genres.length];
             const bpms = [140, 92, 88, 170, 90, 145];
             const bpm = bpms[demoIndex % bpms.length];
             const keys = ['C', 'D', 'E', 'F'];
             const key = keys[demoIndex % keys.length];
-            
+
             const card = createDemoCard(beatName, genre, bpm, key, filename);
             container.appendChild(card);
             demoIndex++;
         });
-        
+
     } catch (error) {
         console.error('Erro ao carregar demos:', error);
         loadBeatsdemosManual(container);
@@ -352,13 +352,13 @@ async function loadBeatsDemos() {
 function createDemoCard(name, genre, bpm, key, filename, description) {
     const card = document.createElement('div');
     card.className = 'demo-card';
-    
+
     const genreLower = genre.toLowerCase();
     const genreClass = genreLower === 'boombap' ? 'boombap' : genreLower;
-    
+
     // Se não houver descrição, criar uma genérica
     const desc = description || `Beat estilo ${genre.toUpperCase()} a ${bpm} BPM. Perfeito para suas produções!`;
-    
+
     card.innerHTML = `
         <h3>${name}</h3>
         <p class="genre-badge ${genreClass}">${genre.toUpperCase()}</p>
@@ -369,7 +369,7 @@ function createDemoCard(name, genre, bpm, key, filename, description) {
         </audio>
         <p class="demo-description">${desc}</p>
     `;
-    
+
     return card;
 }
 
@@ -389,88 +389,100 @@ function loadBeatsdemosManual(container) {
 // CARREGAR VÍDEOS DO YOUTUBE AUTOMATICAMENTE
 // ============================================
 
-async function loadYoutubeProductions() {
+// Fallback: Mostrar a playlist diretamente do YouTube (sem necessidade de API key)
+
+
+// Carrocel Swiper para YouTube (usando API do YouTube)
+async function loadYoutubeCarousel() {
+    const wrapper = document.getElementById('youtube-slides');
+    if (!wrapper) return;
+
+    if (!YOUTUBE_API_KEY) {
+        console.error('YOUTUBE_API_KEY não configurada.');
+        return;
+    }
+
+    let nextPageToken = '';
+    let index = 0;
+
     try {
-        // Usar fetch para buscar vídeos da playlist
-        const playlistUrl = `https://www.youtube.com/playlist?list=${YOUTUBE_PLAYLIST_ID}`;
-        const container = document.getElementById('productions-grid');
-        
-        if (!container) return;
-        
-        // Se não configurou a API, usa fallback com noscript/manual
-        if (!YOUTUBE_API_KEY || YOUTUBE_API_KEY === 'CONFIGURE_SUA_CHAVE_AQUI') {
-            loadYoutubePlaylistEmbedFallback(container);
-            return;
+        do {
+            const res = await fetch(
+                'https://www.googleapis.com/youtube/v3/playlistItems?' +
+                new URLSearchParams({
+                    part: 'snippet',
+                    maxResults: '50',
+                    playlistId: YOUTUBE_PLAYLIST_ID,
+                    key: YOUTUBE_API_KEY,
+                    pageToken: nextPageToken || ''
+                }).toString()
+            );
+
+            if (!res.ok) {
+                console.error('Erro ao buscar playlist do YouTube:', await res.text());
+                break;
+            }
+
+            const data = await res.json();
+            nextPageToken = data.nextPageToken || '';
+
+            (data.items || []).forEach(item => {
+                const videoId = item.snippet?.resourceId?.videoId;
+                const title = item.snippet?.title || 'Vídeo sem título';
+                const thumb =
+                    item.snippet?.thumbnails?.maxres?.url ||
+                    item.snippet?.thumbnails?.high?.url ||
+                    item.snippet?.thumbnails?.medium?.url ||
+                    item.snippet?.thumbnails?.default?.url ||
+                    '';
+
+                if (!videoId) return;
+
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.innerHTML = `
+                    <a class="youtube-slide-link" href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer">
+                        <div class="youtube-thumb">
+                            ${thumb ? `<img src="${thumb}" alt="${title}">` : ''}
+                            <div class="youtube-thumb-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <h3 class="youtube-title">${title}</h3>
+                    </a>
+                `;
+                wrapper.appendChild(slide);
+
+                index++;
+            });
+        } while (nextPageToken);
+
+        if (index > 0) {
+            initSwiper();
         }
-
-        // Buscar vídeos da playlist usando a API
-        const response = await fetch(
-            `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${YOUTUBE_PLAYLIST_ID}&key=${YOUTUBE_API_KEY}&part=snippet&maxResults=50`
-        );
-
-        if (!response.ok) {
-            loadYoutubePlaylistEmbedFallback(container);
-            return;
-        }
-
-        const data = await response.json();
-        const videos = data.items;
-
-        // Limpar container
-        container.innerHTML = '';
-
-        // Criar card para cada vídeo
-        videos.forEach(item => {
-            const videoId = item.snippet.resourceId.videoId;
-            const title = item.snippet.title;
-            const description = item.snippet.description;
-
-            const card = document.createElement('div');
-            card.className = 'production-card';
-            card.innerHTML = `
-                <div class="youtube-embed">
-                    <iframe width="100%" height="280" 
-                        src="https://www.youtube.com/embed/${videoId}" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <h3>${title}</h3>
-                <p class="genre">Produção</p>
-                <p class="description">${description.substring(0, 100)}...</p>
-            `;
-
-            container.appendChild(card);
-        });
-
-    } catch (error) {
-        console.error('Erro ao carregar vídeos do YouTube:', error);
-        const container = document.getElementById('productions-grid');
-        if (container) {
-            loadYoutubePlaylistEmbedFallback(container);
-        }
+    } catch (err) {
+        console.error('Erro inesperado ao carregar carrossel do YouTube:', err);
     }
 }
 
-// Fallback: Mostrar a playlist diretamente do YouTube (sem necessidade de API key)
-function loadYoutubePlaylistEmbedFallback(container) {
-    container.innerHTML = `
-        <div style="grid-column: 1 / -1; padding: 2rem; text-align: center;">
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-            </p>
-            <iframe width="100%" height="600" 
-                src="https://www.youtube.com/embed/videoseries?list=${YOUTUBE_PLAYLIST_ID}" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                style="border-radius: 8px;">
-            </iframe>
-            <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
-            </p>
-        </div>
-    `;
+// Inicializar Carrossel
+function initSwiper() {
+    new Swiper('.youtube-swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+        },
+        breakpoints: {
+            768: { slidesPerView: 2.2 },
+            1024: { slidesPerView: 3.2 }
+        }
+    });
 }
+
+
 
 // ============================================
 // FUNÇÃO DE COMPRA VIA WHATSAPP
@@ -508,10 +520,10 @@ function openGeneralWhatsApp() {
 async function loadTestimonials() {
     const container = document.getElementById('testimonials-grid');
     if (!container) return;
-    
+
     try {
         const config = await loadBeatsFromConfig();
-        
+
         if (config && config.testimonials && config.testimonials.length > 0) {
             container.innerHTML = '';
             config.testimonials.forEach((testimonial, index) => {
@@ -525,10 +537,10 @@ async function loadTestimonials() {
             });
             return;
         }
-        
+
         // Fallback se não houver avaliações no JSON
         loadTestimonialsManual(container);
-        
+
     } catch (error) {
         console.error('Erro ao carregar avaliações:', error);
         loadTestimonialsManual(container);
@@ -538,12 +550,12 @@ async function loadTestimonials() {
 function createTestimonialCard(text, author, role, stars = 5) {
     const card = document.createElement('div');
     card.className = 'testimonial-card';
-    
+
     let starsHTML = '';
     for (let i = 0; i < stars; i++) {
         starsHTML += '<i class="fas fa-star"></i>';
     }
-    
+
     card.innerHTML = `
         <div class="stars">
             ${starsHTML}
@@ -552,7 +564,7 @@ function createTestimonialCard(text, author, role, stars = 5) {
         <p class="testimonial-author">- ${author}</p>
         <p class="testimonial-role">${role}</p>
     `;
-    
+
     return card;
 }
 
@@ -570,26 +582,26 @@ function loadTestimonialsManual(container) {
 // ============================================
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Inicializar estatísticas com animações
     initializeStats();
-    
-    // Carregar vídeos do YouTube automaticamente
-    loadYoutubeProductions();
-    
+
     // Carregar beats à venda automaticamente
     loadBeatsForSale();
-    
+
+    // Carregar as funções do carrossel do YouTube
+    loadYoutubeCarousel();
+
     // Carregar beats de demonstração automaticamente
     loadBeatsDemos();
-    
+
     // Carregar avaliações automaticamente
     loadTestimonials();
 
     // Atualizar o botão de contato WhatsApp
     const contactWhatsAppBtn = document.getElementById('contact-whatsapp');
     if (contactWhatsAppBtn) {
-        contactWhatsAppBtn.addEventListener('click', function(e) {
+        contactWhatsAppBtn.addEventListener('click', function (e) {
             e.preventDefault();
             openGeneralWhatsApp();
         });
@@ -644,7 +656,7 @@ function animateOnScroll() {
         rootMargin: '0px 0px -100px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
@@ -667,7 +679,7 @@ function animateOnScroll() {
 
 function setupSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href !== '#' && document.querySelector(href)) {
                 e.preventDefault();
@@ -710,7 +722,7 @@ function showSuccessMessage(message) {
 // Contador de scroll para efeitos especiais
 let scrollPosition = 0;
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     scrollPosition = window.pageYOffset;
 
     // Efeito no header
@@ -727,7 +739,7 @@ window.addEventListener('scroll', function() {
 // ============================================
 
 document.querySelectorAll('.beat-card, .demo-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         const audio = this.querySelector('audio');
         if (audio) {
             // Efeito visual pode ser adicionado aqui
@@ -742,7 +754,7 @@ document.querySelectorAll('.beat-card, .demo-card').forEach(card => {
 const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 let konamiIndex = 0;
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     const key = e.key;
     const matchesKey = key === konamiCode[konamiIndex] || e.code === konamiCode[konamiIndex];
 
@@ -870,12 +882,12 @@ document.head.appendChild(style);
 function toggleFAQ(button) {
     const faqItem = button.parentElement;
     const isActive = faqItem.classList.contains('active');
-    
+
     // Fechar todos os outros FAQs
     document.querySelectorAll('.faq-item').forEach(item => {
         item.classList.remove('active');
     });
-    
+
     // Toggle do FAQ clicado
     if (!isActive) {
         faqItem.classList.add('active');
@@ -886,21 +898,21 @@ function toggleFAQ(button) {
 // SCROLL TO TOP BUTTON
 // ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const scrollToTopBtn = document.getElementById('scrollToTop');
-    
+
     if (scrollToTopBtn) {
         // Mostrar/esconder botão baseado no scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.scrollY > 300) {
                 scrollToTopBtn.classList.add('visible');
             } else {
                 scrollToTopBtn.classList.remove('visible');
             }
         });
-        
+
         // Scroll suave ao topo
-        scrollToTopBtn.addEventListener('click', function() {
+        scrollToTopBtn.addEventListener('click', function () {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -942,7 +954,7 @@ function openBeatModal(beatName, genre, bpm, key, price, description) {
         `;
         document.body.appendChild(modal);
     }
-    
+
     // Preencher conteúdo
     document.getElementById('modalBeatTitle').textContent = beatName;
     document.getElementById('modalBeatGenre').textContent = genre.toUpperCase();
@@ -952,7 +964,7 @@ function openBeatModal(beatName, genre, bpm, key, price, description) {
     audioPlayer.innerHTML = `<source src="recursos/sons/sell/${beatName.replace(/ /g, '_')}.mp3" type="audio/mpeg">`;
     document.getElementById('modalBeatDescription').textContent = description || 'Beat produzido com qualidade profissional.';
     document.getElementById('modalBeatPrice').textContent = 'R$ ' + price;
-    
+
     // Mostrar modal
     modal.classList.add('active');
 }
@@ -965,7 +977,7 @@ function closeBeatModal() {
 }
 
 // Fechar modal ao clicar fora
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const modal = document.getElementById('beatModal');
     if (modal && event.target === modal) {
         closeBeatModal();
@@ -973,7 +985,7 @@ document.addEventListener('click', function(event) {
 });
 
 // Fechar modal com tecla ESC
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         closeBeatModal();
     }
