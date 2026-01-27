@@ -171,13 +171,28 @@ async function loadBeatsForSale() {
         if (config && config.beatsForSale && config.beatsForSale.length > 0) {
             container.innerHTML = '';
             config.beatsForSale.forEach((beat, index) => {
+                const genres = Array.isArray(beat.genres) && beat.genres.length > 0
+                    ? beat.genres
+                    : [beat.genre];
                 const customPrice = beat.price ? {
                     nonExclusive: beat.price.nonExclusive,
                     exclusive: beat.price.exclusive
                 } : null;
-                const card = createBeatCard(beat.name, beat.genre, beat.bpm, beat.key, beat.filename, index, customPrice);
+                const card = createBeatCard(
+                    beat.name,
+                    genres,
+                    beat.bpm,
+                    beat.key,
+                    beat.filename,
+                    index,
+                    customPrice,
+                    beat.mood
+                );
                 container.appendChild(card);
             });
+
+            // Ativar filtros depois de carregar os beats
+            setupBeatsFilters();
             return;
         }
 
@@ -213,10 +228,13 @@ async function loadBeatsForSale() {
             const keys = ['C', 'D', 'E', 'F'];
             const key = keys[beatIndex % keys.length];
 
-            const card = createBeatCard(beatName, genre, bpm, key, filename, beatIndex);
+            const card = createBeatCard(beatName, [genre], bpm, key, filename, beatIndex);
             container.appendChild(card);
             beatIndex++;
         });
+
+        // Ativar filtros depois de carregar os beats
+        setupBeatsFilters();
 
     } catch (error) {
         console.error('Erro ao carregar beats:', error);
@@ -224,12 +242,28 @@ async function loadBeatsForSale() {
     }
 }
 
-function createBeatCard(name, genre, bpm, key, filename, index, customPrice = null) {
+function toGenreSlug(genre) {
+    return (genre || '')
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+function createBeatCard(name, genres, bpm, key, filename, index, customPrice = null, mood = '') {
     const card = document.createElement('div');
     card.className = 'beat-card';
 
-    const genreLower = genre.toLowerCase();
-    const genreClass = genreLower === 'boombap' ? 'boombap' : genreLower;
+    const genresArray = Array.isArray(genres) ? genres : [genres];
+    const primaryGenre = genresArray[0] || 'Trap';
+    const primarySlug = toGenreSlug(primaryGenre);
+
+    // Guardar informações para filtros
+    card.dataset.genres = genresArray.map(toGenreSlug).join(',');
+    card.dataset.key = (key || '').toString();
+    card.dataset.mood = (mood || '').toString();
 
     // Preços padrão por gênero
     const defaultPrices = {
@@ -239,13 +273,24 @@ function createBeatCard(name, genre, bpm, key, filename, index, customPrice = nu
     };
 
     // Usar preço customizado (do JSON) ou padrão
-    const price = customPrice || defaultPrices[genreLower] || defaultPrices['trap'];
+    const priceKey =
+        primarySlug.includes('trap') ? 'trap'
+            : primarySlug.includes('boombap') ? 'boombap'
+                : 'rap';
+    const price = customPrice || defaultPrices[priceKey] || defaultPrices['trap'];
+
+    const badgesHtml = genresArray
+        .map(g => {
+            const slug = toGenreSlug(g);
+            return `<span class="genre-badge ${slug}">${g.toUpperCase()}</span>`;
+        })
+        .join(' ');
 
     card.innerHTML = `
         <div class="beat-image"></div>
         <div class="beat-info">
             <h3>${name}</h3>
-            <p class="genre-badge ${genreClass}">${genre.toUpperCase()}</p>
+            ${badgesHtml}
             <p class="bpm"><i class="fas fa-drum"></i> ${bpm} BPM</p>
             <p class="key"><i class="fas fa-music"></i> ${key}</p>
             <audio controls>
@@ -271,6 +316,54 @@ function createBeatCard(name, genre, bpm, key, filename, index, customPrice = nu
     `;
 
     return card;
+}
+
+// ============================================
+// FILTROS DE BEATS (PORTFÓLIO)
+// ============================================
+
+function setupBeatsFilters() {
+    setupFilterGroup('beats-filters-genres', 'genres', true);
+    setupFilterGroup('beats-filters-keys', 'key', false);
+    setupFilterGroup('beats-filters-moods', 'mood', false);
+}
+
+function setupFilterGroup(containerId, dataAttr, isMultiValue) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    if (container.dataset.initialized === 'true') return;
+
+    const buttons = container.querySelectorAll('[data-filter]');
+    const cards = document.querySelectorAll('.beat-card');
+    if (!buttons.length || !cards.length) return;
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            cards.forEach(card => {
+                const value = (card.dataset[dataAttr] || '').toString();
+
+                let match = false;
+                if (!filter || filter === 'all') {
+                    match = true;
+                } else if (isMultiValue) {
+                    const parts = value.split(',').filter(Boolean);
+                    match = parts.includes(filter);
+                } else {
+                    match = value === filter;
+                }
+
+                card.style.display = match ? '' : 'none';
+            });
+        });
+    });
+
+    container.dataset.initialized = 'true';
 }
 
 // Fallback: Adicionar manualmente ou via configuração
@@ -404,6 +497,7 @@ async function loadYoutubeCarousel() {
 
     let nextPageToken = '';
     let index = 0;
+    let announcementVideo = null;
 
     try {
         do {
@@ -437,6 +531,11 @@ async function loadYoutubeCarousel() {
                     '';
 
                 if (!videoId) return;
+
+                // Guardar o primeiro vídeo da playlist para o anúncio
+                if (!announcementVideo) {
+                    announcementVideo = { videoId, title, thumb };
+                }
 
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
@@ -473,6 +572,11 @@ async function loadYoutubeCarousel() {
                     openYoutubeModal(videoId, title);
                 });
             });
+
+            // Agendar modal de última produção após alguns segundos
+            if (announcementVideo) {
+                scheduleLatestProductionModal(announcementVideo);
+            }
         }
     } catch (err) {
         console.error('Erro inesperado ao carregar carrossel do YouTube:', err);
@@ -572,6 +676,102 @@ function closeYoutubeModal() {
     }
 }
 
+// ============================================
+// MODAL DE ÚLTIMA PRODUÇÃO (ANÚNCIO)
+// ============================================
+
+let latestProductionTimeoutSet = false;
+
+function scheduleLatestProductionModal(video) {
+    if (latestProductionTimeoutSet) return;
+    latestProductionTimeoutSet = true;
+
+    // Mostrar após 15 segundos na página
+    setTimeout(() => {
+        openLatestProductionModal(video);
+    }, 10000);
+}
+
+function openLatestProductionModal(video) {
+    if (!video || !video.videoId) return;
+
+    let modal = document.getElementById('latestProductionModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'latestProductionModal';
+        modal.className = 'latest-production-modal';
+        modal.innerHTML = `
+            <div class="latest-production-content">
+                <button class="latest-production-close" type="button">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="latest-production-body">
+                    <div class="latest-production-thumb-wrapper">
+                        <img id="latestProductionThumb" src="" alt="Última produção">
+                    </div>
+                    <div class="latest-production-info">
+                        <p class="latest-production-label">Última produção feita já disponível no YouTube</p>
+                        <h3 id="latestProductionTitle"></h3>
+                        <p class="latest-production-text">
+                            Dê uma olhada
+                        </p>
+                        <div class="latest-production-actions">
+                            <button type="button" class="btn btn-primary" id="latestProductionWatch">
+                                Assistir agora
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="latestProductionDismiss">
+                                Talvez depois
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Fechar no X
+        modal.querySelector('.latest-production-close')
+            .addEventListener('click', closeLatestProductionModal);
+
+        // Fechar ao clicar fora
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeLatestProductionModal();
+            }
+        });
+
+        // Botão "Talvez depois"
+        modal.querySelector('#latestProductionDismiss')
+            .addEventListener('click', closeLatestProductionModal);
+
+        // Assistir agora
+        modal.querySelector('#latestProductionWatch')
+            .addEventListener('click', () => {
+                closeLatestProductionModal();
+                openYoutubeModal(video.videoId, video.title);
+            });
+    }
+
+    const thumbEl = document.getElementById('latestProductionThumb');
+    const titleEl = document.getElementById('latestProductionTitle');
+    if (thumbEl && video.thumb) {
+        thumbEl.src = video.thumb;
+        thumbEl.alt = video.title;
+    }
+    if (titleEl) {
+        titleEl.textContent = video.title;
+    }
+
+    modal.classList.add('active');
+}
+
+function closeLatestProductionModal() {
+    const modal = document.getElementById('latestProductionModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
 
 
 // ============================================
@@ -598,6 +798,17 @@ function openWhatsAppChat(beatName, price) {
 
 function openGeneralWhatsApp() {
     const message = `Olá! 👋 Gostaria de saber mais sobre seus beats e produções. Qual é a melhor forma de trabalharmos juntos?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    window.open(whatsappLink, '_blank');
+}
+
+// ============================================
+// FUNÇÃO DE PACOTES VIA WHATSAPP
+// ============================================
+
+function openPackageWhatsApp(packageName) {
+    const message = `Olá! Tenho interesse no *${packageName}*. Podemos conversar sobre detalhes, estilo e valores?`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     window.open(whatsappLink, '_blank');
@@ -717,12 +928,27 @@ document.addEventListener('DOMContentLoaded', function () {
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    const name = e.target.querySelector('input[type="text"]').value;
-    const email = e.target.querySelector('input[type="email"]').value;
-    const message = e.target.querySelector('textarea').value;
+    const name = document.getElementById('brief-name')?.value || '';
+    const email = document.getElementById('brief-email')?.value || '';
+    const style = document.getElementById('brief-style')?.value || '';
+    const bpm = document.getElementById('brief-bpm')?.value || '';
+    const budget = document.getElementById('brief-budget')?.value || '';
+    const deadline = document.getElementById('brief-deadline')?.value || '';
+    const reference = document.getElementById('brief-reference')?.value || '';
+    const details = document.getElementById('brief-message')?.value || '';
 
-    // Criar mensagem formatada
-    const fullMessage = `Formulário de Contato:\n\nNome: ${name}\nEmail: ${email}\nMensagem: ${message}`;
+    // Criar mensagem formatada focada em briefing de encomenda
+    let fullMessage = 'Briefing de Encomenda de Beat:\n\n';
+    if (name) fullMessage += `Nome: ${name}\n`;
+    if (email) fullMessage += `Email: ${email}\n`;
+    if (style) fullMessage += `Estilo desejado: ${style}\n`;
+    if (bpm) fullMessage += `BPM aproximado: ${bpm}\n`;
+    if (budget) fullMessage += `Orçamento aproximado: ${budget}\n`;
+    if (deadline) fullMessage += `Prazo desejado: ${deadline}\n`;
+    if (reference) fullMessage += `Referências: ${reference}\n`;
+
+    fullMessage += '\nDetalhes adicionais:\n';
+    fullMessage += details || '(sem detalhes adicionais)';
     const encodedMessage = encodeURIComponent(fullMessage);
 
     // Abrir WhatsApp com a mensagem

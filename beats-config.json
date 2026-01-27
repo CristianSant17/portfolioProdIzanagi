@@ -4,8 +4,10 @@
       "filename": "DinheiroDemo.mp3",
       "name": "Dinheiro - Beat Completo",
       "genre": "boombap",
+      "genres": ["boombap", "Rap"],
       "bpm": "82",
       "key": "A Minor",
+      "mood": "Agressivo",
       "price": {
         "nonExclusive": 50.00,
         "exclusive": 100.00
@@ -15,8 +17,10 @@
       "filename": "Block.mp3",
       "name": "Block - Beat Completo",
       "genre": "boombap",
+      "genres": ["boombap", "Rap"],
       "bpm": "90",
       "key": "G# Minor",
+      "mood": "Agressivo",
       "price": {
         "nonExclusive": 40.00,
         "exclusive": 80.00
@@ -26,8 +30,10 @@
       "filename": "japaneseDemo.mp3",
       "name": "Japanese - Beat Completo",
       "genre": "rap",
+      "genres": ["Rap", "Trap", "Anime"],
       "bpm": "100",
       "key": "D# Minor",
+      "mood": "Anime",
       "price": {
         "nonExclusive": 60.00,
         "exclusive": 120.00
@@ -37,8 +43,10 @@
       "filename": "LuzDemo.mp3",
       "name": "Luz - Beat Completo",
       "genre": "rap",
+      "genres": ["Rap", "Rap Melódico"],
       "bpm": "125",
       "key": "A Major",
+      "mood": "Motivacional",
       "price": {
         "nonExclusive": 60.00,
         "exclusive": 120.00
@@ -48,8 +56,10 @@
       "filename": "PoleDanceDemo.mp3",
       "name": "Pole Dance - Beat Completo",
       "genre": "trap",
+      "genres": ["Trap", "Funk", "Game"],
       "bpm": "130",
       "key": "C Minor",
+      "mood": "Agressivo",
       "price": {
         "nonExclusive": 25.00,
         "exclusive": 60.00
@@ -59,8 +69,10 @@
       "filename": "RomaDemo.mp3",
       "name": "Roma - Beat Completo",
       "genre": "trap",
+      "genres": ["Trap", "Rap"],
       "bpm": "120",
       "key": "E Minor",
+      "mood": "Agressivo",
       "price": {
         "nonExclusive": 50.00,
         "exclusive": 100.00
@@ -70,8 +82,10 @@
       "filename": "VibeDemo.mp3",
       "name": "Vibe - Beat Completo",
       "genre": "rap",
+      "genres": ["Rap", "Rap Melódico", "Lo-fi"],
       "bpm": "110",
       "key": "A# Minor",
+      "mood": "Calmo",
       "price": {
         "nonExclusive": 20.00,
         "exclusive": 80.00
@@ -81,8 +95,10 @@
       "filename": "StringDemo.mp3",
       "name": "String - Beat Completo",
       "genre": "trap",
+      "genres": ["Trap", "Drill"],
       "bpm": "130",
       "key": "G Minor",
+      "mood": "Agressivo",
       "price": {
         "nonExclusive": 30.00,
         "exclusive": 75.00
@@ -94,42 +110,54 @@
       "filename": "BravosDemo.mp3",
       "name": "Bravos Demonstração",
       "genre": "rap",
-      "bpm": "130"
+      "genres": ["Rap"],
+      "bpm": "130",
+      "mood": "Agressivo"
     },
     {
       "filename": "ReferênciasDemo.mp3",
       "name": "Referências - Beat Completo",
       "genre": "trap",
+      "genres": ["Trap"],
       "bpm": "88",
-      "key": "G Minor"
+      "key": "G Minor",
+      "mood": "Game"
     },
     {
       "filename": "NextDemo.mp3",
       "name": "Next - Beat Completo",
       "genre": "rap",
+      "genres": ["Rap", "Rap Melódico"],
       "bpm": "120",
-      "key": "C Minor"
+      "key": "C Minor",
+      "mood": "Motivacional"
     },
     {
       "filename": "ReisDemo.mp3",
       "name": "Reis - Beat Completo",
       "genre": "rap",
+      "genres": ["Rap"],
       "bpm": "128",
-      "key": "E Minor"
+      "key": "E Minor",
+      "mood": "Agressivo"
     },
     {
       "filename": "SintéticoDemo.mp3",
       "name": "Sintético - Beat Completo",
       "genre": "rap",
+      "genres": ["Rap", "Trap"],
       "bpm": "90",
-      "key": "G Minor"
+      "key": "G Minor",
+      "mood": "Sombrio"
     },
     {
       "filename": "SusanoDemo.mp3",
       "name": "Susano - Beat Completo",
       "genre": "trap",
+      "genres": ["Trap", "Anime"],
       "bpm": "70",
-      "key": "A Minor"
+      "key": "A Minor",
+      "mood": "Anime"
     }
   ],
   "testimonials": [

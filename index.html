@@ -20,7 +20,8 @@
     </div>
     <!-- Anúncio -->
     <div class="anuncio">
-        <p>Aceito pagamentos via PIX. Comissões abertas ;)</p>
+        <p>💰 Pagamentos via PIX</p>
+        <p>🎧 Comissões abertas para beats exclusivos e personalizados</p>
     </div>
 
     <!-- CABEÇALHO / NAVEGAÇÃO -->
@@ -54,10 +55,10 @@
             <div class="hero-content">
                 <img src="recursos/imagens/favicon.png" alt="Prod.Izanagi Logo" class="logo-img-hero">
                 <h1>Prod.Izanagi</h1>
-                <p class="hero-subtitle">Beats do seguimento do HipHop</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="document.getElementById('beats').scrollIntoView({behavior: 'smooth'})">Comprar Beats</button>
-                    <button class="btn btn-secondary" onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})">Ouvir Demos</button>
+                <p class="hero-subtitle">Beats Profissionais de Hip Hop, Trap e Anime Rap</p>
+                <div class="hero-form">
+                    <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Fazer encomenda</button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('faq').scrollIntoView({behavior: 'smooth'})">Perguntas frequentes</button>
                 </div>
                 
                 <!-- ESTATÍSTICAS -->
@@ -138,10 +139,104 @@
                 <h2>Beats à Venda</h2>
                 <p>Produções disponíveis para compra com licença exclusiva ou não exclusiva</p>
                 <p>Negociações feitas diretamente pelo WhatsApp</p>
+                <h6>⚠️ Beats não exclusivos permanecem disponíveis após a compra.</h6>
+
+                <div class="beats-filters" id="beats-filters">
+                    <h3>Filtrar por:</h3>
+                    <div class="beats-filters-row" id="beats-filters-genres">
+                        <h4>Gêneros:</h4>
+                        <button type="button" class="btn-filter active" data-filter="all">Todos os gêneros</button>
+                        <button type="button" class="btn-filter" data-filter="trap">Trap</button>
+                        <button type="button" class="btn-filter" data-filter="rap">Rap</button>
+                        <button type="button" class="btn-filter" data-filter="boom-bap">Boom Bap</button>
+                        <button type="button" class="btn-filter" data-filter="rap-melodico">Rap Melódico</button>
+                        <button type="button" class="btn-filter" data-filter="drill">Drill</button>
+                        <button type="button" class="btn-filter" data-filter="lo-fi">Lo-fi</button>
+                        <button type="button" class="btn-filter" data-filter="funk">Funk</button>
+                        <button type="button" class="btn-filter" data-filter="anime">Anime</button>
+                    </div>
+
+                    <div class="beats-filters-row" id="beats-filters-keys">
+                        <h4>Tonalidades:</h4>
+                        <button type="button" class="btn-filter active" data-filter="all">Todas as tonalidades</button>
+                        <button type="button" class="btn-filter" data-filter="A Minor">A Minor</button>
+                        <button type="button" class="btn-filter" data-filter="A Major">A Major</button>
+                        <button type="button" class="btn-filter" data-filter="A# Minor">A# Minor</button>
+                        <button type="button" class="btn-filter" data-filter="C Minor">C Minor</button>
+                        <button type="button" class="btn-filter" data-filter="D# Minor">D# Minor</button>
+                        <button type="button" class="btn-filter" data-filter="E Minor">E Minor</button>
+                        <button type="button" class="btn-filter" data-filter="G Minor">G Minor</button>
+                        <button type="button" class="btn-filter" data-filter="G# Minor">G# Minor</button>
+                    </div>
+
+                    <div class="beats-filters-row" id="beats-filters-moods">
+                        <h4>Climas:</h4>
+                        <button type="button" class="btn-filter active" data-filter="all">Todos os climas</button>
+                        <button type="button" class="btn-filter" data-filter="Triste">Triste</button>
+                        <button type="button" class="btn-filter" data-filter="Agressivo">Agressivo</button>
+                        <button type="button" class="btn-filter" data-filter="Anime">Anime</button>
+                        <button type="button" class="btn-filter" data-filter="Game">Game</button>
+                        <button type="button" class="btn-filter" data-filter="Calmo">Calmo</button>
+                        <button type="button" class="btn-filter" data-filter="Motivacional">Motivacional</button>
+                        <button type="button" class="btn-filter" data-filter="Sombrio">Sombrio</button>
+                    </div>
+                </div>
             </div>
 
             <div class="beats-grid" id="beats-grid">
                 <!-- Os beats serão carregados automaticamente aqui -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO PACOTES E OFERTAS -->
+        <section id="packages" class="section packages-section">
+            <div class="section-header">
+                <h2>Pacotes e Ofertas</h2>
+                <p>Escolha o pacote ideal para o seu momento como artista</p>
+            </div>
+
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Pacote Single</h3>
+                    <p class="package-tag">Ideal para lançar uma música forte</p>
+                    <ul class="package-features">
+                        <li>1 beat exclusivo feito sob medida</li>
+                        <li>Ajustes de estrutura (intro, drop, viradas)</li>
+                        <li>Entrega em WAV + MP3</li>
+                    </ul>
+                    <p class="package-price">A partir de <strong>R$ 250</strong></p>
+                    <button type="button" class="btn btn-primary" onclick="openPackageWhatsApp('Pacote Single - 1 Beat Exclusivo')">
+                        Fechar Pacote via WhatsApp
+                    </button>
+                </div>
+
+                <div class="package-card featured">
+                    <h3>Pacote EP</h3>
+                    <p class="package-tag">3 beats com identidade única</p>
+                    <ul class="package-features">
+                        <li>3 beats exclusivos seguindo a mesma estética</li>
+                        <li>Possibilidade de variações entre faixas (vibe, bpm)</li>
+                        <li>Desconto em relação ao valor avulso</li>
+                    </ul>
+                    <p class="package-price">A partir de <strong>R$ 650</strong></p>
+                    <button type="button" class="btn btn-primary" onclick="openPackageWhatsApp('Pacote EP - 3 Beats Exclusivos')">
+                        Quero um EP fechado
+                    </button>
+                </div>
+
+                <div class="package-card">
+                    <h3>Pacote Conteúdo</h3>
+                    <p class="package-tag">Para criadores de conteúdo e streamers</p>
+                    <ul class="package-features">
+                        <li>Beats/loops para fundo de vídeos e lives</li>
+                        <li>Licença de uso para plataformas digitais</li>
+                        <li>Arquivos otimizados para edição</li>
+                    </ul>
+                    <p class="package-price">A partir de <strong>R$ 180</strong></p>
+                    <button type="button" class="btn btn-primary" onclick="openPackageWhatsApp('Pacote Conteúdo - Beats para vídeos e lives')">
+                        Falar sobre o pacote
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -197,11 +292,33 @@
                     </div>
                 </div>
 
-                <form class="contact-form">
-                    <input type="text" placeholder="Seu Nome" required>
-                    <input type="email" placeholder="Seu Email" required>
-                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                <form class="contact-form"  id="contact-form">
+                    <h3>Preencha o formulário abaixo para encomendar seu beat</h3>
+                    <input id="brief-name" type="text" placeholder="Seu Nome" required>
+                    <input id="brief-email" type="email" placeholder="Seu Email (opcional)">
+
+                    <select id="brief-style" required>
+                        <option value="">Estilo desejado (ex: Trap, Boom Bap...)</option>
+                        <option value="Trap">Trap</option>
+                        <option value="Boom Bap">Boom Bap</option>
+                        <option value="Rap Melódico">Rap Melódico</option>
+                        <option value="Drill">Drill</option>
+                        <option value="Lo-fi">Lo-fi</option>
+                        <option value="Outro">Outro / misto</option>
+                    </select>
+
+                    <div class="contact-form-row">
+                        <input id="brief-bpm" type="number" placeholder="BPM aproximado (ex: 140)" min="60" max="220">
+                        <input id="brief-budget" type="text" placeholder="Orçamento aproximado (ex: R$ 300)">
+                    </div>
+
+                    <div class="contact-form-row">
+                        <input id="brief-deadline" type="text" placeholder="Prazo desejado (ex: 2 semanas)">
+                        <input id="brief-reference" type="text" placeholder="Link(s) de referência (YouTube, Spotify, etc.)">
+                    </div>
+
+                    <textarea id="brief-message" placeholder="Conte a vibe, tema, sentimento, referências de letra ou história que quer passar..." rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar Briefing via WhatsApp</button>
                 </form>
             </div>
         </section>
