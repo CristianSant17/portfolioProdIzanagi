@@ -5,6 +5,7 @@
       "name": "Dinheiro - Beat Completo",
       "genre": "boombap",
       "bpm": "82",
+      "key": "A Minor",
       "price": {
         "nonExclusive": 50.00,
         "exclusive": 100.00
@@ -15,6 +16,7 @@
       "name": "Block - Beat Completo",
       "genre": "boombap",
       "bpm": "90",
+      "key": "G# Minor",
       "price": {
         "nonExclusive": 40.00,
         "exclusive": 80.00
@@ -25,6 +27,7 @@
       "name": "Japanese - Beat Completo",
       "genre": "rap",
       "bpm": "100",
+      "key": "D# Minor",
       "price": {
         "nonExclusive": 60.00,
         "exclusive": 120.00
@@ -35,6 +38,7 @@
       "name": "Luz - Beat Completo",
       "genre": "rap",
       "bpm": "125",
+      "key": "A Major",
       "price": {
         "nonExclusive": 60.00,
         "exclusive": 120.00
@@ -45,6 +49,7 @@
       "name": "Pole Dance - Beat Completo",
       "genre": "trap",
       "bpm": "130",
+      "key": "C Minor",
       "price": {
         "nonExclusive": 25.00,
         "exclusive": 60.00
@@ -55,6 +60,7 @@
       "name": "Roma - Beat Completo",
       "genre": "trap",
       "bpm": "120",
+      "key": "E Minor",
       "price": {
         "nonExclusive": 50.00,
         "exclusive": 100.00
@@ -65,6 +71,7 @@
       "name": "Vibe - Beat Completo",
       "genre": "rap",
       "bpm": "110",
+      "key": "A# Minor",
       "price": {
         "nonExclusive": 20.00,
         "exclusive": 80.00
@@ -75,6 +82,7 @@
       "name": "String - Beat Completo",
       "genre": "trap",
       "bpm": "130",
+      "key": "G Minor",
       "price": {
         "nonExclusive": 30.00,
         "exclusive": 75.00
@@ -92,31 +100,36 @@
       "filename": "ReferênciasDemo.mp3",
       "name": "Referências - Beat Completo",
       "genre": "trap",
-      "bpm": "88"
+      "bpm": "88",
+      "key": "G Minor"
     },
     {
       "filename": "NextDemo.mp3",
       "name": "Next - Beat Completo",
       "genre": "rap",
-      "bpm": "120"
+      "bpm": "120",
+      "key": "C Minor"
     },
     {
       "filename": "ReisDemo.mp3",
       "name": "Reis - Beat Completo",
       "genre": "rap",
-      "bpm": "128"
+      "bpm": "128",
+      "key": "E Minor"
     },
     {
       "filename": "SintéticoDemo.mp3",
       "name": "Sintético - Beat Completo",
       "genre": "rap",
-      "bpm": "120"
+      "bpm": "90",
+      "key": "G Minor"
     },
     {
       "filename": "SusanoDemo.mp3",
       "name": "Susano - Beat Completo",
       "genre": "trap",
-      "bpm": "120"
+      "bpm": "70",
+      "key": "A Minor"
     }
   ],
   "testimonials": [

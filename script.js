@@ -175,7 +175,7 @@ async function loadBeatsForSale() {
                     nonExclusive: beat.price.nonExclusive,
                     exclusive: beat.price.exclusive
                 } : null;
-                const card = createBeatCard(beat.name, beat.genre, beat.bpm, beat.filename, index, customPrice);
+                const card = createBeatCard(beat.name, beat.genre, beat.bpm, beat.key, beat.filename, index, customPrice);
                 container.appendChild(card);
             });
             return;
@@ -210,8 +210,10 @@ async function loadBeatsForSale() {
             const genre = genres[beatIndex % genres.length];
             const bpms = [140, 95, 85, 150];
             const bpm = bpms[beatIndex % bpms.length];
+            const keys = ['C', 'D', 'E', 'F'];
+            const key = keys[beatIndex % keys.length];
             
-            const card = createBeatCard(beatName, genre, bpm, filename, beatIndex);
+            const card = createBeatCard(beatName, genre, bpm, key, filename, beatIndex);
             container.appendChild(card);
             beatIndex++;
         });
@@ -222,7 +224,7 @@ async function loadBeatsForSale() {
     }
 }
 
-function createBeatCard(name, genre, bpm, filename, index, customPrice = null) {
+function createBeatCard(name, genre, bpm, key, filename, index, customPrice = null) {
     const card = document.createElement('div');
     card.className = 'beat-card';
     
@@ -245,6 +247,7 @@ function createBeatCard(name, genre, bpm, filename, index, customPrice = null) {
             <h3>${name}</h3>
             <p class="genre-badge ${genreClass}">${genre.toUpperCase()}</p>
             <p class="bpm"><i class="fas fa-drum"></i> ${bpm} BPM</p>
+            <p class="key"><i class="fas fa-music"></i> ${key}</p>
             <audio controls>
                 <source src="recursos/sons/sell/${filename}" type="audio/mpeg">
             </audio>
@@ -297,7 +300,7 @@ async function loadBeatsDemos() {
         if (config && config.beatsDemos && config.beatsDemos.length > 0) {
             container.innerHTML = '';
             config.beatsDemos.forEach((beat, index) => {
-                const card = createDemoCard(beat.name, beat.genre, beat.bpm, beat.filename);
+                const card = createDemoCard(beat.name, beat.genre, beat.bpm, beat.key, beat.filename);
                 container.appendChild(card);
             });
             return;
@@ -332,8 +335,10 @@ async function loadBeatsDemos() {
             const genre = genres[demoIndex % genres.length];
             const bpms = [140, 92, 88, 170, 90, 145];
             const bpm = bpms[demoIndex % bpms.length];
+            const keys = ['C', 'D', 'E', 'F'];
+            const key = keys[demoIndex % keys.length];
             
-            const card = createDemoCard(beatName, genre, bpm, filename);
+            const card = createDemoCard(beatName, genre, bpm, key, filename);
             container.appendChild(card);
             demoIndex++;
         });
@@ -344,7 +349,7 @@ async function loadBeatsDemos() {
     }
 }
 
-function createDemoCard(name, genre, bpm, filename, description) {
+function createDemoCard(name, genre, bpm, key, filename, description) {
     const card = document.createElement('div');
     card.className = 'demo-card';
     
@@ -358,6 +363,7 @@ function createDemoCard(name, genre, bpm, filename, description) {
         <h3>${name}</h3>
         <p class="genre-badge ${genreClass}">${genre.toUpperCase()}</p>
         <p class="bpm"><i class="fas fa-drum"></i> ${bpm} BPM</p>
+        <p class="key"><i class="fas fa-music"></i> ${key}</p>
         <audio controls>
             <source src="recursos/sons/demo/${filename}" type="audio/mp3">
         </audio>
@@ -907,7 +913,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // MODAL PREVIEW BEATS
 // ============================================
 
-function openBeatModal(beatName, genre, bpm, price, description) {
+function openBeatModal(beatName, genre, bpm, key, price, description) {
     // Se o modal não existe, criar
     let modal = document.getElementById('beatModal');
     if (!modal) {
@@ -922,6 +928,7 @@ function openBeatModal(beatName, genre, bpm, price, description) {
                 <h3 class="modal-beat-title" id="modalBeatTitle">Beat</h3>
                 <span class="modal-beat-genre" id="modalBeatGenre">Rap</span>
                 <p class="modal-beat-bpm" id="modalBeatBPM">120 BPM</p>
+                <p class="modal-beat-key" id="modalBeatKey">C</p>
                 <audio controls class="modal-beat-player" id="modalBeatPlayer"></audio>
                 <p class="modal-beat-description" id="modalBeatDescription"></p>
                 <div class="modal-beat-price">
@@ -940,6 +947,9 @@ function openBeatModal(beatName, genre, bpm, price, description) {
     document.getElementById('modalBeatTitle').textContent = beatName;
     document.getElementById('modalBeatGenre').textContent = genre.toUpperCase();
     document.getElementById('modalBeatBPM').textContent = bpm + ' BPM';
+    document.getElementById('modalBeatKey').textContent = key;
+    const audioPlayer = document.getElementById('modalBeatPlayer');
+    audioPlayer.innerHTML = `<source src="recursos/sons/sell/${beatName.replace(/ /g, '_')}.mp3" type="audio/mpeg">`;
     document.getElementById('modalBeatDescription').textContent = description || 'Beat produzido com qualidade profissional.';
     document.getElementById('modalBeatPrice').textContent = 'R$ ' + price;
     
