@@ -474,6 +474,7 @@ audio::-webkit-media-controls-volume-slider {
 .btn-primary {
     background-color: var(--primary-dark);
     color: var(--secondary);
+    margin-bottom: 20px;
 }
 
 .btn-primary:hover {
