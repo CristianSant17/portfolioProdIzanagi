@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato e FAQ - Prod.Izanagi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="icon" href="recursos/imagens/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- SPLASH SCREEN / INTRO ANIMATION -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <img class="splash-img" src="recursos/imagens/favicon.png" alt="Prod.Izanagi Logo">
+            <h1 class="splash-text">Prod.Izanagi</h1>
+            <p class="splash-subtitle">Beatmaker</p>
+            <p class="splash-page-label" id="splash-page-label"></p>
+            <div class="splash-loader"></div>
+            <p class="splash-countdown" id="splash-countdown"></p>
+            <p class="splash-tip" id="splash-tip"></p>
+        </div>
+    </div>
+    <!-- Anúncio -->
+    <div class="anuncio">
+        <p>💰 Pagamentos via PIX</p>
+        <p>🎧 Comissões abertas para beats exclusivos e personalizados</p>
+    </div>
+
+    <!-- CABEÇALHO / NAVEGAÇÃO -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="logo">
+                    <img src="recursos/imagens/logo.png" alt="Prod.Izanagi Logo" class="logo-img">
+                    <span class="logo-text">Prod.Izanagi</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html#home" class="nav-link">Início</a></li>
+                    <li><a href="index.html#production" class="nav-link">Produções</a></li>
+                    <li><a href="beats.html#beats" class="nav-link">Beats</a></li>
+                    <li><a href="beats.html#demo" class="nav-link">Demo</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Avaliações</a></li>
+                    <li><a href="contato.html#contact" class="nav-link active">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- INTRO CONTATO -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Entre em Contato</h2>
+                <p>Use o WhatsApp ou o formulário para encomendar um beat ou tirar dúvidas</p>
+            </div>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="openGeneralWhatsApp()">
+                    Falar direto no WhatsApp
+                </button>
+                <button class="btn btn-secondary"
+                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    Preencher formulário
+                </button>
+                <button class="btn btn-secondary"
+                    onclick="document.getElementById('faq').scrollIntoView({behavior: 'smooth'})">
+                    Ver perguntas frequentes
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='beats.html#beats'">
+                    Ver beats à venda
+                </button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO CONTATO -->
+        <section id="contact" class="section contact-section">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>+55 (77) 99845-4572</p>
+                        <a href="#" class="btn btn-primary" id="contact-whatsapp">Enviar Mensagem</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <p>@prod.izanagi</p>
+                        <a class="btn btn-primary" data-instagram-link>Visitar Perfil</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-youtube"></i>
+                        <h3>YouTube</h3>
+                        <p>Canal de Beats e Produções</p>
+                        <a class="btn btn-primary" data-youtube-link>Ver Canal</a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contact-form">
+                    <h3>Preencha o formulário abaixo para encomendar seu beat</h3>
+                    <input id="brief-name" type="text" placeholder="Seu Nome" required>
+                    <input id="brief-email" type="email" placeholder="Seu Email (opcional)">
+
+                    <select id="brief-style" required>
+                        <option value="">Estilo desejado (ex: Trap, Boom Bap...)</option>
+                        <option value="Trap">Trap</option>
+                        <option value="Boom Bap">Boom Bap</option>
+                        <option value="Rap Melódico">Rap Melódico</option>
+                        <option value="Drill">Drill</option>
+                        <option value="Lo-fi">Lo-fi</option>
+                        <option value="Outro">Outro / misto</option>
+                    </select>
+
+                    <div class="contact-form-row">
+                        <input id="brief-bpm" type="number" placeholder="BPM aproximado (ex: 140)" min="60" max="220">
+                        <input id="brief-budget" type="text" placeholder="Orçamento aproximado (ex: R$ 300)">
+                    </div>
+
+                    <div class="contact-form-row">
+                        <input id="brief-deadline" type="text" placeholder="Prazo desejado (ex: 2 semanas)">
+                        <input id="brief-reference" type="text"
+                            placeholder="Link(s) de referência (YouTube, Spotify, etc.)">
+                    </div>
+
+                    <textarea id="brief-message"
+                        placeholder="Conte a vibe, tema, sentimento, referências de letra ou história que quer passar..."
+                        rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar Briefing via WhatsApp</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SEÇÃO FAQ -->
+        <section id="faq" class="section faq-section">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+                <p>Dúvidas sobre como funciona a compra?</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Como funciona a compra de beats?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A compra é simples e rápida! Escolha o beat que deseja, clique em "Comprar", e você será
+                            direcionado ao WhatsApp. Lá finalizaremos a compra e enviaremos o arquivo do beat para você.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Qual é a diferença entre beats exclusivos e não exclusivos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Beats Não Exclusivos:</strong> Podem ser vendidos para vários artistas e terão a tag
+                            do produtor. Ideal para quem quer um beat com preço mais acessível. Arquivo em MP3 e WAV</p>
+                        <p><strong>Beats Exclusivos:</strong> São vendidos apenas para um artista podendo ter as tracks
+                            inteiras separadas para uma melhor produção. Somente você terá direito ao beat, nenhum outro
+                            artista poderá usá-lo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Posso ouvir o beat antes de comprar?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Todos os beats têm um player de preview. Clique no botão "Preview" para ouvir e ver os
+                            detalhes do beat antes de decidir comprar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Quanto tempo leva para receber o beat após a compra?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O beat é enviado imediatamente após a confirmação do pagamento pelo WhatsApp. Você receberá o
+                            arquivo em alta qualidade (WAV, MP3 ou ambos).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Quais são as formas de pagamento?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>As formas de pagamento serão discutidas no WhatsApp. Aceitamos Pix, transferência bancária e
+                            cartão de crédito.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Prod.Izanagi. Todos os direitos reservados.</p>
+            <button class="scroll-to-top" id="scrollToTop" title="Voltar ao topo">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            <div class="social-links">
+                <a
+                    href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbTFPWmhsQVphYzgwYlp2WnBweUdOdmFEdzY5QXxBQ3Jtc0tuMVZsX2FaWUJtV20xYUV0QWdvUzBnSUs5UUZEWVZ0WWYxTkZTeGZmZzdHX1dOc18yWUFreHh0eno2bWwtQ3V1SUh2QUFnWXBmakROOTZpQjBzOWp0TzVtd2xLcTFvbFVGWFFyM3JjdlVQVGozNkNRNA&q=https%3A%2F%2Fwww.instagram.com%2Fprod.izanagi"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@prod.izanagi"><i class="fab fa-youtube"></i></a>
+                <a href="contato.html#contact"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>

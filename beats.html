@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beats e Pacotes - Prod.Izanagi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="icon" href="recursos/imagens/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- SPLASH SCREEN / INTRO ANIMATION -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <img class="splash-img" src="recursos/imagens/favicon.png" alt="Prod.Izanagi Logo">
+            <h1 class="splash-text">Prod.Izanagi</h1>
+            <p class="splash-subtitle">Beatmaker</p>
+            <p class="splash-page-label" id="splash-page-label"></p>
+            <div class="splash-loader"></div>
+            <p class="splash-countdown" id="splash-countdown"></p>
+            <p class="splash-tip" id="splash-tip"></p>
+        </div>
+    </div>
+    <!-- Anúncio -->
+    <div class="anuncio">
+        <p>💰 Pagamentos via PIX</p>
+        <p>🎧 Comissões abertas para beats exclusivos e personalizados</p>
+    </div>
+
+    <!-- CABEÇALHO / NAVEGAÇÃO -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="logo">
+                    <img src="recursos/imagens/logo.png" alt="Prod.Izanagi Logo" class="logo-img">
+                    <span class="logo-text">Prod.Izanagi</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html#home" class="nav-link">Início</a></li>
+                    <li><a href="index.html#production" class="nav-link">Produções</a></li>
+                    <li><a href="beats.html#beats" class="nav-link active">Beats</a></li>
+                    <li><a href="beats.html#demo" class="nav-link">Demo</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Avaliações</a></li>
+                    <li><a href="contato.html#contact" class="nav-link">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- INTRO DA PÁGINA DE BEATS -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Beats, Pacotes e Demonstrações</h2>
+                <p>Encontre o beat ideal ou um pacote fechado para o seu próximo som</p>
+            </div>
+            <div class="hero-buttons">
+                <button class="btn btn-primary"
+                    onclick="document.getElementById('beats').scrollIntoView({behavior: 'smooth'})">
+                    Ver beats à venda
+                </button>
+                <button class="btn btn-secondary"
+                    onclick="document.getElementById('packages').scrollIntoView({behavior: 'smooth'})">
+                    Ver pacotes
+                </button>
+                <button class="btn btn-secondary"
+                    onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})">
+                    Ouvir beats demo
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='contato.html#contact'">
+                    Falar com o produtor
+                </button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO BEATS À VENDA -->
+        <section id="beats" class="section beats-section">
+            <div class="section-header">
+                <h2>Beats à Venda</h2>
+                <p>Produções disponíveis para compra com licença exclusiva ou não exclusiva</p>
+                <p>Negociações feitas diretamente pelo WhatsApp</p>
+                <h6>⚠️ Beats não exclusivos permanecem disponíveis após a compra.</h6>
+
+                <div class="beats-filters" id="beats-filters">
+                    <h3>Filtrar por:</h3>
+                    <div class="beats-filters-row" id="beats-filters-genres">
+                        <h4>Gêneros:</h4>
+                        <button type="button" class="btn-filter active" data-filter="all">Todos os gêneros</button>
+                        <button type="button" class="btn-filter" data-filter="trap">Trap</button>
+                        <button type="button" class="btn-filter" data-filter="rap">Rap</button>
+                        <button type="button" class="btn-filter" data-filter="boom-bap">Boom Bap</button>
+                        <button type="button" class="btn-filter" data-filter="rap-melodico">Rap Melódico</button>
+                        <button type="button" class="btn-filter" data-filter="drill">Drill</button>
+                        <button type="button" class="btn-filter" data-filter="lo-fi">Lo-fi</button>
+                        <button type="button" class="btn-filter" data-filter="funk">Funk</button>
+                        <button type="button" class="btn-filter" data-filter="anime">Anime</button>
+                    </div>
+
+                    <div class="beats-filters-row" id="beats-filters-keys">
+                        <h4>Tonalidades:</h4>
+                        <button type="button" class="btn-filter active" data-filter="all">Todas as tonalidades</button>
+                        <button type="button" class="btn-filter" data-filter="A Minor">A Minor</button>
+                        <button type="button" class="btn-filter" data-filter="A Major">A Major</button>
+                        <button type="button" class="btn-filter" data-filter="A# Minor">A# Minor</button>
+                        <button type="button" class="btn-filter" data-filter="C Minor">C Minor</button>
+                        <button type="button" class="btn-filter" data-filter="D# Minor">D# Minor</button>
+                        <button type="button" class="btn-filter" data-filter="E Minor">E Minor</button>
+                        <button type="button" class="btn-filter" data-filter="G Minor">G Minor</button>
+                        <button type="button" class="btn-filter" data-filter="G# Minor">G# Minor</button>
+                    </div>
+
+                    <div class="beats-filters-row" id="beats-filters-moods">
+                        <h4>Climas:</h4>
+                        <button type="button" class="btn-filter active" data-filter="all">Todos os climas</button>
+                        <button type="button" class="btn-filter" data-filter="Triste">Triste</button>
+                        <button type="button" class="btn-filter" data-filter="Agressivo">Agressivo</button>
+                        <button type="button" class="btn-filter" data-filter="Anime">Anime</button>
+                        <button type="button" class="btn-filter" data-filter="Game">Game</button>
+                        <button type="button" class="btn-filter" data-filter="Calmo">Calmo</button>
+                        <button type="button" class="btn-filter" data-filter="Motivacional">Motivacional</button>
+                        <button type="button" class="btn-filter" data-filter="Sombrio">Sombrio</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beats-grid" id="beats-grid">
+                <!-- Os beats serão carregados automaticamente aqui -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO PACOTES E OFERTAS -->
+        <section id="packages" class="section packages-section">
+            <div class="section-header">
+                <h2>Pacotes e Ofertas</h2>
+                <p>Escolha o pacote ideal para o seu momento como artista</p>
+                <small class="packages-note">
+                    Valores podem ser negociados • Todos os pacotes incluem WAV + MP3 + Stems em WAV •
+                    Até 7 dias úteis para ajustes • Comunicação direta via WhatsApp
+                </small>
+            </div>
+
+            <div class="packages-grid">
+
+                <!-- PACOTE ESSÊNCIA -->
+                <div class="package-card">
+                    <h3>Pacote Essência</h3>
+                    <p class="package-tag">Ideal para lançar uma música forte</p>
+                    <ul class="package-features">
+                        <li>1 beat 100% autoral e exclusivo</li>
+                        <li>Duração de até 5 minutos</li>
+                        <li>Produção focada na identidade do artista</li>
+                    </ul>
+                    <p class="package-price">A partir de <strong>R$ 100</strong></p>
+                    <button type="button" class="btn btn-primary"
+                        onclick="openPackageWhatsApp('Pacote Essência - 1 Beat Exclusivo')">
+                        Fechar pacote via WhatsApp
+                    </button>
+                </div>
+
+                <!-- PACOTE IDENTIDADE -->
+                <div class="package-card">
+                    <h3>Pacote Identidade</h3>
+                    <p class="package-tag">Construa sua estética musical</p>
+                    <ul class="package-features">
+                        <li>2 beats exclusivos</li>
+                        <li>Até 5 minutos cada</li>
+                        <li>Coerência de vibe, timbres e clima</li>
+                        <li>Melhor custo-benefício que avulso</li>
+                    </ul>
+                    <p class="package-price">A partir de <strong>R$ 180</strong></p>
+                    <button type="button" class="btn btn-primary"
+                        onclick="openPackageWhatsApp('Pacote Identidade - 2 Beats Exclusivos')">
+                        Quero definir minha identidade
+                    </button>
+                </div>
+
+                <!-- PACOTE EP (DESTAQUE) -->
+                <div class="package-card featured">
+                    <h3>Pacote EP</h3>
+                    <p class="package-tag">Pra quem leva a música a sério</p>
+                    <ul class="package-features">
+                        <li>3 beats exclusivos com identidade única</li>
+                        <li>Até 5 minutos cada</li>
+                        <li>Pensado como um mini-projeto musical</li>
+                        <li>Desconto real em relação ao valor unitário</li>
+                    </ul>
+                    <p class="package-price"><strong>R$ 250</strong></p>
+                    <button type="button" class="btn btn-primary"
+                        onclick="openPackageWhatsApp('Pacote EP - 3 Beats Exclusivos')">
+                        Quero um EP fechado
+                    </button>
+                </div>
+
+                <!-- PACOTE DROP -->
+                <div class="package-card">
+                    <h3>Pacote DROP</h3>
+                    <p class="package-tag">Volume, constância e produtividade</p>
+                    <ul class="package-features">
+                        <li>8+ beats exclusivos</li>
+                        <li>Até 5 minutos cada</li>
+                        <li>Ideal para gravar várias músicas de uma vez</li>
+                        <li>Excelente custo por beat</li>
+                    </ul>
+                    <p class="package-price"><strong>R$ 600</strong></p>
+                    <button type="button" class="btn btn-primary"
+                        onclick="openPackageWhatsApp('Pacote DROP - 8+ Beats Exclusivos')">
+                        Fechar projeto completo
+                    </button>
+                </div>
+
+                <!-- PACOTE LITE -->
+                <div class="package-card">
+                    <h3>Pacote Lite</h3>
+                    <p class="package-tag">Ideal para soundtracks e conteúdo</p>
+                    <ul class="package-features">
+                        <li>1 instrumental curto</li>
+                        <li>Duração de até 1 minuto</li>
+                        <li>Perfeito para vídeos, reels e intros</li>
+                    </ul>
+                    <p class="package-price">A partir de <strong>R$ 50</strong></p>
+                    <button type="button" class="btn btn-primary"
+                        onclick="openPackageWhatsApp('Pacote Lite - Instrumental Curto')">
+                        Falar sobre o pacote
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO BEATS DEMONSTRAÇÃO -->
+        <section id="demo" class="section">
+            <div class="section-header">
+                <h2>Beats Demonstração</h2>
+                <p>Ouça alguns dos melhores beats que já produzi</p>
+            </div>
+
+            <div class="demo-grid" id="demo-grid">
+                <!-- Os beats de demo serão carregados automaticamente aqui -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Prod.Izanagi. Todos os direitos reservados.</p>
+            <button class="scroll-to-top" id="scrollToTop" title="Voltar ao topo">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            <div class="social-links">
+                <a
+                    href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbTFPWmhsQVphYzgwYlp2WnBweUdOdmFEdzY5QXxBQ3Jtc0tuMVZsX2FaWUJtV20xYUV0QWdvUzBnSUs5UUZEWVZ0WWYxTkZTeGZmZzdHX1dOc18yWUFreHh0eno2bWwtQ3V1SUh2QUFnWXBmakROOTZpQjBzOWp0TzVtd2xLcTFvbFVGWFFyM3JjdlVQVGozNkNRNA&q=https%3A%2F%2Fwww.instagram.com%2Fprod.izanagi"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@prod.izanagi"><i class="fab fa-youtube"></i></a>
+                <a href="contato.html#contact"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>

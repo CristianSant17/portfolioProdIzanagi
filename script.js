@@ -24,10 +24,57 @@ window.addEventListener('load', function () {
     const splashScreen = document.getElementById('splash-screen');
 
     if (splashScreen) {
-        // Remover splash screen após 3.3 segundos (2.5s animação + 0.8s fade out)
+        // Mensagens/dicas aleatórias para a splash
+        const tips = [
+            'Use referências de beats na mensagem para um resultado mais preciso.',
+            'Já tem letra pronta? Envie junto no briefing do beat.',
+            'Fale a vibe, BPM aproximado e referências de artistas que você curte.',
+            'Beats exclusivos garantem que só você vai usar aquela base.',
+            'Quanto mais detalhes no briefing, mais o beat fica com a sua cara.'
+        ];
+
+        const tipElement = document.getElementById('splash-tip');
+        if (tipElement) {
+            const randomIndex = Math.floor(Math.random() * tips.length);
+            tipElement.textContent = tips[randomIndex];
+        }
+
+        // Nome da página atual na splash
+        const pageLabelElement = document.getElementById('splash-page-label');
+        if (pageLabelElement) {
+            let pageLabel = 'Carregando início';
+            const title = (document.title || '').toLowerCase();
+
+            if (title.includes('beats')) {
+                pageLabel = 'Carregando página de beats';
+            } else if (title.includes('contato')) {
+                pageLabel = 'Carregando página de contato';
+            }
+
+            pageLabelElement.textContent = pageLabel;
+        }
+
+        // Contador rápido 3-2-1
+        const countdownElement = document.getElementById('splash-countdown');
+        if (countdownElement) {
+            let value = 3;
+            countdownElement.textContent = value.toString();
+
+            const interval = setInterval(() => {
+                value -= 1;
+                if (value <= 0) {
+                    clearInterval(interval);
+                    countdownElement.textContent = '';
+                } else {
+                    countdownElement.textContent = value.toString();
+                }
+            }, 400);
+        }
+
+        // Remover splash screen após ~1.6 segundos (0.8s visível + 0.8s fade out)
         setTimeout(function () {
             splashScreen.classList.add('hidden');
-        }, 3000);
+        }, 1600);
 
         // Permitir fechar o splash ao clicar
         splashScreen.addEventListener('click', function () {

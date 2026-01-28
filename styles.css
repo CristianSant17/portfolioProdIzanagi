@@ -68,7 +68,7 @@ audio::-webkit-media-controls-volume-slider {
     align-items: center;
     justify-content: center;
     animation: splashFadeOut 0.8s ease-in-out forwards;
-    animation-delay: 2.5s;
+    animation-delay: 0.8s;
 }
 
 .splash-screen.hidden {
@@ -78,6 +78,25 @@ audio::-webkit-media-controls-volume-slider {
 .splash-content {
     text-align: center;
     animation: splashScale 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.splash-loader {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.08);
+    border-top-color: var(--primary-dark);
+    border-right-color: var(--accent-light);
+    margin: 1.5rem auto 0.75rem auto;
+    animation: splashSpin 0.8s linear infinite;
+}
+
+.splash-tip {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 320px;
+    margin: 0 auto;
+    margin-top: 0.25rem;
 }
 
 .splash-logo {
@@ -107,6 +126,19 @@ audio::-webkit-media-controls-volume-slider {
     font-weight: 600;
     letter-spacing: 2px;
     animation: splashTextFade 1.2s ease-in-out 0.3s backwards;
+}
+
+.splash-page-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 0.6rem;
+}
+
+.splash-countdown {
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+    margin-top: 0.4rem;
+    letter-spacing: 2px;
 }
 
 .splash-img {
@@ -148,6 +180,16 @@ audio::-webkit-media-controls-volume-slider {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes splashSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }
 
@@ -256,6 +298,10 @@ audio::-webkit-media-controls-volume-slider {
     color: var(--primary-dark);
 }
 
+.nav-link.active {
+    color: var(--primary-dark);
+}
+
 .nav-link::after {
     content: '';
     position: absolute;
@@ -268,6 +314,10 @@ audio::-webkit-media-controls-volume-slider {
 }
 
 .nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
     width: 100%;
 }
 
@@ -500,9 +550,10 @@ audio::-webkit-media-controls-volume-slider {
    ============================================ */
 
 .productions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
     margin-bottom: 4rem;
 }
 
@@ -583,9 +634,10 @@ audio::-webkit-media-controls-volume-slider {
 }
 
 .artists-icons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
 }
 
 .artist-icon {
@@ -893,6 +945,7 @@ audio::-webkit-media-controls-volume-slider {
         grid-template-columns: 1fr;
     }
 }
+
 /* ============================================
    BEATS À VENDA
    ============================================ */
@@ -939,9 +992,10 @@ audio::-webkit-media-controls-volume-slider {
 }
 
 .beats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
 }
 
 .beat-card {
@@ -1055,9 +1109,10 @@ audio::-webkit-media-controls-volume-slider {
 }
 
 .packages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
 }
 
 .package-card {
@@ -1162,9 +1217,10 @@ audio::-webkit-media-controls-volume-slider {
    ============================================ */
 
 .demo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
 }
 
 .demo-card {
@@ -1225,9 +1281,10 @@ audio::-webkit-media-controls-volume-slider {
    ============================================ */
 
 .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
 }
 
 .testimonial-card {
@@ -1293,8 +1350,50 @@ audio::-webkit-media-controls-volume-slider {
 }
 
 .contact-info {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
+}
+
+/* Larguras dos cards para formar pares em desktop
+   (duas colunas por linha, última linha centralizada) */
+.productions-grid .production-card,
+.beats-grid .beat-card,
+.demo-grid .demo-card,
+.packages-grid .package-card,
+.testimonials-grid .testimonial-card,
+.contact-info .contact-item,
+.artists-icons .artist-icon {
+    flex: 0 1 calc(50% - 2rem);
+    max-width: 420px;
+}
+
+@media (max-width: 900px) {
+
+    .productions-grid .production-card,
+    .beats-grid .beat-card,
+    .demo-grid .demo-card,
+    .packages-grid .package-card,
+    .testimonials-grid .testimonial-card,
+    .contact-info .contact-item,
+    .artists-icons .artist-icon {
+        flex: 0 1 calc(50% - 1.5rem);
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .productions-grid .production-card,
+    .beats-grid .beat-card,
+    .demo-grid .demo-card,
+    .packages-grid .package-card,
+    .testimonials-grid .testimonial-card,
+    .contact-info .contact-item,
+    .artists-icons .artist-icon {
+        flex: 0 1 100%;
+    }
 }
 
 .contact-item {

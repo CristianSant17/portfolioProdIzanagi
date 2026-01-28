@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" href="recursos/imagens/favicon.png" type="image/x-icon">
 </head>
+
 <body>
     <!-- SPLASH SCREEN / INTRO ANIMATION -->
     <div id="splash-screen" class="splash-screen">
@@ -16,6 +18,10 @@
             <img class="splash-img" src="recursos/imagens/favicon.png" alt="Prod.Izanagi Logo">
             <h1 class="splash-text">Prod.Izanagi</h1>
             <p class="splash-subtitle">Beatmaker</p>
+            <p class="splash-page-label" id="splash-page-label"></p>
+            <div class="splash-loader"></div>
+            <p class="splash-countdown" id="splash-countdown"></p>
+            <p class="splash-tip" id="splash-tip"></p>
         </div>
     </div>
     <!-- Anúncio -->
@@ -38,12 +44,12 @@
                     <span></span>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#home" class="nav-link">Início</a></li>
-                    <li><a href="#production" class="nav-link">Produções</a></li>
-                    <li><a href="#beats" class="nav-link">Beats</a></li>
-                    <li><a href="#demo" class="nav-link">Demo</a></li>
-                    <li><a href="#testimonials" class="nav-link">Avaliações</a></li>
-                    <li><a href="#contact" class="nav-link">Contato</a></li>
+                    <li><a href="index.html#home" class="nav-link active">Início</a></li>
+                    <li><a href="index.html#production" class="nav-link">Produções</a></li>
+                    <li><a href="beats.html#beats" class="nav-link">Beats</a></li>
+                    <li><a href="beats.html#demo" class="nav-link">Demo</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Avaliações</a></li>
+                    <li><a href="contato.html#contact" class="nav-link">Contato</a></li>
                 </ul>
             </div>
         </nav>
@@ -57,14 +63,17 @@
                 <h1>Prod.Izanagi</h1>
                 <p class="hero-subtitle">Beats Profissionais de Hip Hop, Trap e Anime Rap</p>
                 <div class="hero-form">
-                    <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Fazer encomenda</button>
-                    <button class="btn btn-secondary" onclick="document.getElementById('faq').scrollIntoView({behavior: 'smooth'})">Perguntas frequentes</button>
+                    <button class="btn btn-primary" onclick="window.location.href='contato.html#contact'">Fazer
+                        encomenda</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='contato.html#faq'">Perguntas
+                        frequentes</button>
                 </div>
-                
+
                 <!-- ESTATÍSTICAS -->
                 <div class="hero-stats">
                     <div class="stat-card">
-                        <a href="https://www.youtube.com/@prod.izanagi" target="_blank" class="stat-link" data-youtube-link>
+                        <a href="https://www.youtube.com/@prod.izanagi" target="_blank" class="stat-link"
+                            data-youtube-link>
                             <h3 id="youtube-subscribers">0</h3>
                             <p>Inscritos no YouTube</p>
                         </a>
@@ -98,159 +107,58 @@
                 <h3>Artistas que Trabalhei</h3>
                 <div class="artists-icons">
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/T-KxAeOo5jyIFX6FGYV4NB-aV7zt9NmgboD_IkZUNrrJnx_iydSAXpxkQx6Gqg2hdM1LE95X=s160-c-k-c0x00ffffff-no-rj" alt="Artista 2">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/T-KxAeOo5jyIFX6FGYV4NB-aV7zt9NmgboD_IkZUNrrJnx_iydSAXpxkQx6Gqg2hdM1LE95X=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 2">
                         <p>ZeroLimitez</p>
                     </div>
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/EI2-VjWF0lTdKRviD-lEXB6RubK1MTV_rJ7HuwSXuh4yeooepzmsd8TrZgdKy197HcaU1Owe38I=s160-c-k-c0x00ffffff-no-rj" alt="Artista 3">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/EI2-VjWF0lTdKRviD-lEXB6RubK1MTV_rJ7HuwSXuh4yeooepzmsd8TrZgdKy197HcaU1Owe38I=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 3">
                         <p>ThunderBlack</p>
                     </div>
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/dX2LdJJgVoD_s9gAdrbFiTdHjhPgnO7I8g_gXUUv_DZ1gRROMj5f_P6UHROf3S7XWc51iwVe_g=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/dX2LdJJgVoD_s9gAdrbFiTdHjhPgnO7I8g_gXUUv_DZ1gRROMj5f_P6UHROf3S7XWc51iwVe_g=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 4">
                         <p>KMG</p>
                     </div>
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/w-m5xbzNpnHaC79VO9YmyWHsD0ky1Tdx7FXLkJ0Q0-ArnJwbONk4--OQYKTFE3xZ1kyGG9uSjA=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/w-m5xbzNpnHaC79VO9YmyWHsD0ky1Tdx7FXLkJ0Q0-ArnJwbONk4--OQYKTFE3xZ1kyGG9uSjA=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 4">
                         <p>Guizim</p>
                     </div>
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/QWmLEL1iTjWvq3VTd471voSloXtx9I8Ihsbd2jUfcpbOqFF8Yjlja8IOit8dVB3iUG-Jltgj=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/QWmLEL1iTjWvq3VTd471voSloXtx9I8Ihsbd2jUfcpbOqFF8Yjlja8IOit8dVB3iUG-Jltgj=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 4">
                         <p>Allfeu</p>
                     </div>
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/FNaPE7bkJW3FWY0rHW2hT2ia94vYKUNyUUKchQaQKJ1b9kPqJw_vky9x66AvdmZxcAv7OpqJ=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/FNaPE7bkJW3FWY0rHW2hT2ia94vYKUNyUUKchQaQKJ1b9kPqJw_vky9x66AvdmZxcAv7OpqJ=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 4">
                         <p>Ychigo𝄢</p>
                     </div>
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/c6q2xzNmcMyvMLjxeYf5XgMyC8TiReAH3xaioiF0HKm7I71NXUqLOM_uv86tZuzdbmNdfU1-sQ=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/c6q2xzNmcMyvMLjxeYf5XgMyC8TiReAH3xaioiF0HKm7I71NXUqLOM_uv86tZuzdbmNdfU1-sQ=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 4">
                         <p>Tsugix</p>
                     </div>
                     <div class="artist-icon">
-                        <img loading="lazy" src="https://yt3.googleusercontent.com/IiA8VocYcMuLOpF91QBgDbEgBPIPzxwrddTzsJ13bZDzEhcgZG0WdbwtTMW_j_-nRPlmSoFDcsk=s160-c-k-c0x00ffffff-no-rj" alt="Artista 4">
+                        <img loading="lazy"
+                            src="https://yt3.googleusercontent.com/IiA8VocYcMuLOpF91QBgDbEgBPIPzxwrddTzsJ13bZDzEhcgZG0WdbwtTMW_j_-nRPlmSoFDcsk=s160-c-k-c0x00ffffff-no-rj"
+                            alt="Artista 4">
                         <p>Noty Fox</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO BEATS À VENDA -->
-        <section id="beats" class="section beats-section">
-            <div class="section-header">
-                <h2>Beats à Venda</h2>
-                <p>Produções disponíveis para compra com licença exclusiva ou não exclusiva</p>
-                <p>Negociações feitas diretamente pelo WhatsApp</p>
-                <h6>⚠️ Beats não exclusivos permanecem disponíveis após a compra.</h6>
-
-                <div class="beats-filters" id="beats-filters">
-                    <h3>Filtrar por:</h3>
-                    <div class="beats-filters-row" id="beats-filters-genres">
-                        <h4>Gêneros:</h4>
-                        <button type="button" class="btn-filter active" data-filter="all">Todos os gêneros</button>
-                        <button type="button" class="btn-filter" data-filter="trap">Trap</button>
-                        <button type="button" class="btn-filter" data-filter="rap">Rap</button>
-                        <button type="button" class="btn-filter" data-filter="boom-bap">Boom Bap</button>
-                        <button type="button" class="btn-filter" data-filter="rap-melodico">Rap Melódico</button>
-                        <button type="button" class="btn-filter" data-filter="drill">Drill</button>
-                        <button type="button" class="btn-filter" data-filter="lo-fi">Lo-fi</button>
-                        <button type="button" class="btn-filter" data-filter="funk">Funk</button>
-                        <button type="button" class="btn-filter" data-filter="anime">Anime</button>
-                    </div>
-
-                    <div class="beats-filters-row" id="beats-filters-keys">
-                        <h4>Tonalidades:</h4>
-                        <button type="button" class="btn-filter active" data-filter="all">Todas as tonalidades</button>
-                        <button type="button" class="btn-filter" data-filter="A Minor">A Minor</button>
-                        <button type="button" class="btn-filter" data-filter="A Major">A Major</button>
-                        <button type="button" class="btn-filter" data-filter="A# Minor">A# Minor</button>
-                        <button type="button" class="btn-filter" data-filter="C Minor">C Minor</button>
-                        <button type="button" class="btn-filter" data-filter="D# Minor">D# Minor</button>
-                        <button type="button" class="btn-filter" data-filter="E Minor">E Minor</button>
-                        <button type="button" class="btn-filter" data-filter="G Minor">G Minor</button>
-                        <button type="button" class="btn-filter" data-filter="G# Minor">G# Minor</button>
-                    </div>
-
-                    <div class="beats-filters-row" id="beats-filters-moods">
-                        <h4>Climas:</h4>
-                        <button type="button" class="btn-filter active" data-filter="all">Todos os climas</button>
-                        <button type="button" class="btn-filter" data-filter="Triste">Triste</button>
-                        <button type="button" class="btn-filter" data-filter="Agressivo">Agressivo</button>
-                        <button type="button" class="btn-filter" data-filter="Anime">Anime</button>
-                        <button type="button" class="btn-filter" data-filter="Game">Game</button>
-                        <button type="button" class="btn-filter" data-filter="Calmo">Calmo</button>
-                        <button type="button" class="btn-filter" data-filter="Motivacional">Motivacional</button>
-                        <button type="button" class="btn-filter" data-filter="Sombrio">Sombrio</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="beats-grid" id="beats-grid">
-                <!-- Os beats serão carregados automaticamente aqui -->
-            </div>
-        </section>
-
-        <!-- SEÇÃO PACOTES E OFERTAS -->
-        <section id="packages" class="section packages-section">
-            <div class="section-header">
-                <h2>Pacotes e Ofertas</h2>
-                <p>Escolha o pacote ideal para o seu momento como artista</p>
-            </div>
-
-            <div class="packages-grid">
-                <div class="package-card">
-                    <h3>Pacote Single</h3>
-                    <p class="package-tag">Ideal para lançar uma música forte</p>
-                    <ul class="package-features">
-                        <li>1 beat exclusivo feito sob medida</li>
-                        <li>Ajustes de estrutura (intro, drop, viradas)</li>
-                        <li>Entrega em WAV + MP3</li>
-                    </ul>
-                    <p class="package-price">A partir de <strong>R$ 250</strong></p>
-                    <button type="button" class="btn btn-primary" onclick="openPackageWhatsApp('Pacote Single - 1 Beat Exclusivo')">
-                        Fechar Pacote via WhatsApp
-                    </button>
-                </div>
-
-                <div class="package-card featured">
-                    <h3>Pacote EP</h3>
-                    <p class="package-tag">3 beats com identidade única</p>
-                    <ul class="package-features">
-                        <li>3 beats exclusivos seguindo a mesma estética</li>
-                        <li>Possibilidade de variações entre faixas (vibe, bpm)</li>
-                        <li>Desconto em relação ao valor avulso</li>
-                    </ul>
-                    <p class="package-price">A partir de <strong>R$ 650</strong></p>
-                    <button type="button" class="btn btn-primary" onclick="openPackageWhatsApp('Pacote EP - 3 Beats Exclusivos')">
-                        Quero um EP fechado
-                    </button>
-                </div>
-
-                <div class="package-card">
-                    <h3>Pacote Conteúdo</h3>
-                    <p class="package-tag">Para criadores de conteúdo e streamers</p>
-                    <ul class="package-features">
-                        <li>Beats/loops para fundo de vídeos e lives</li>
-                        <li>Licença de uso para plataformas digitais</li>
-                        <li>Arquivos otimizados para edição</li>
-                    </ul>
-                    <p class="package-price">A partir de <strong>R$ 180</strong></p>
-                    <button type="button" class="btn btn-primary" onclick="openPackageWhatsApp('Pacote Conteúdo - Beats para vídeos e lives')">
-                        Falar sobre o pacote
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO BEATS DEMONSTRAÇÃO -->
-        <section id="demo" class="section">
-            <div class="section-header">
-                <h2>Beats Demonstração</h2>
-                <p>Ouça alguns dos melhores beats que já produzi</p>
-            </div>
-
-            <div class="demo-grid" id="demo-grid">
-                <!-- Os beats de demo serão carregados automaticamente aqui -->
-            </div>
-        </section>
+        <!-- As seções de Beats, Pacotes e Demonstrações agora estão em beats.html -->
 
         <!-- SEÇÃO AVALIAÇÕES/COMENTÁRIOS -->
         <section id="testimonials" class="section">
@@ -263,126 +171,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO CONTATO -->
-        <section id="contact" class="section contact-section">
-            <div class="section-header">
-                <h2>Entre em Contato</h2>
-                <p>Tire suas dúvidas ou faça uma encomenda personalizada</p>
-            </div>
-
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <h3>WhatsApp</h3>
-                        <p>+55 (77) 99845-4572</p>
-                        <a href="#" class="btn btn-primary" id="contact-whatsapp">Enviar Mensagem</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-instagram"></i>
-                        <h3>Instagram</h3>
-                        <p>@prod.izanagi</p>
-                        <a class="btn btn-primary" data-instagram-link>Visitar Perfil</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-youtube"></i>
-                        <h3>YouTube</h3>
-                        <p>Canal de Beats e Produções</p>
-                        <a class="btn btn-primary" data-youtube-link>Ver Canal</a>
-                    </div>
-                </div>
-
-                <form class="contact-form"  id="contact-form">
-                    <h3>Preencha o formulário abaixo para encomendar seu beat</h3>
-                    <input id="brief-name" type="text" placeholder="Seu Nome" required>
-                    <input id="brief-email" type="email" placeholder="Seu Email (opcional)">
-
-                    <select id="brief-style" required>
-                        <option value="">Estilo desejado (ex: Trap, Boom Bap...)</option>
-                        <option value="Trap">Trap</option>
-                        <option value="Boom Bap">Boom Bap</option>
-                        <option value="Rap Melódico">Rap Melódico</option>
-                        <option value="Drill">Drill</option>
-                        <option value="Lo-fi">Lo-fi</option>
-                        <option value="Outro">Outro / misto</option>
-                    </select>
-
-                    <div class="contact-form-row">
-                        <input id="brief-bpm" type="number" placeholder="BPM aproximado (ex: 140)" min="60" max="220">
-                        <input id="brief-budget" type="text" placeholder="Orçamento aproximado (ex: R$ 300)">
-                    </div>
-
-                    <div class="contact-form-row">
-                        <input id="brief-deadline" type="text" placeholder="Prazo desejado (ex: 2 semanas)">
-                        <input id="brief-reference" type="text" placeholder="Link(s) de referência (YouTube, Spotify, etc.)">
-                    </div>
-
-                    <textarea id="brief-message" placeholder="Conte a vibe, tema, sentimento, referências de letra ou história que quer passar..." rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">Enviar Briefing via WhatsApp</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- SEÇÃO FAQ -->
-        <section id="faq" class="section faq-section">
-            <div class="section-header">
-                <h2>Perguntas Frequentes</h2>
-                <p>Dúvidas sobre como funciona a compra?</p>
-            </div>
-
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Como funciona a compra de beats?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A compra é simples e rápida! Escolha o beat que deseja, clique em "Comprar", e você será direcionado ao WhatsApp. Lá finalizaremos a compra e enviaremos o arquivo do beat para você.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Qual é a diferença entre beats exclusivos e não exclusivos?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p><strong>Beats Não Exclusivos:</strong> Podem ser vendidos para vários artistas e terão a tag do produtor. Ideal para quem quer um beat com preço mais acessível. Arquivo em MP3 e WAV</p>
-                        <p><strong>Beats Exclusivos:</strong> São vendidos apenas para um artista podendo ter as tracks inteiras separadas para uma melhor produção. Somente você terá direito ao beat, nenhum outro artista poderá usá-lo.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Posso ouvir o beat antes de comprar?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Sim! Todos os beats têm um player de preview. Clique no botão "Preview" para ouvir e ver os detalhes do beat antes de decidir comprar.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Quanto tempo leva para receber o beat após a compra?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>O beat é enviado imediatamente após a confirmação do pagamento pelo WhatsApp. Você receberá o arquivo em alta qualidade (WAV, MP3 ou ambos).</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Quais são as formas de pagamento?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>As formas de pagamento serão discutidas no WhatsApp. Aceitamos Pix, transferência bancária e cartão de crédito.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- As seções de Contato e FAQ agora estão em contato.html -->
     </main>
 
     <footer class="footer">
@@ -392,7 +181,9 @@
                 <i class="fas fa-arrow-up"></i>
             </button>
             <div class="social-links">
-                <a href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbTFPWmhsQVphYzgwYlp2WnBweUdOdmFEdzY5QXxBQ3Jtc0tuMVZsX2FaWUJtV20xYUV0QWdvUzBnSUs5UUZEWVZ0WWYxTkZTeGZmZzdHX1dOc18yWUFreHh0eno2bWwtQ3V1SUh2QUFnWXBmakROOTZpQjBzOWp0TzVtd2xLcTFvbFVGWFFyM3JjdlVQVGozNkNRNA&q=https%3A%2F%2Fwww.instagram.com%2Fprod.izanagi"><i class="fab fa-instagram"></i></a>
+                <a
+                    href="https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbTFPWmhsQVphYzgwYlp2WnBweUdOdmFEdzY5QXxBQ3Jtc0tuMVZsX2FaWUJtV20xYUV0QWdvUzBnSUs5UUZEWVZ0WWYxTkZTeGZmZzdHX1dOc18yWUFreHh0eno2bWwtQ3V1SUh2QUFnWXBmakROOTZpQjBzOWp0TzVtd2xLcTFvbFVGWFFyM3JjdlVQVGozNkNRNA&q=https%3A%2F%2Fwww.instagram.com%2Fprod.izanagi"><i
+                        class="fab fa-instagram"></i></a>
                 <a href="https://www.youtube.com/@prod.izanagi"><i class="fab fa-youtube"></i></a>
                 <a href="#contact"><i class="fab fa-whatsapp"></i></a>
             </div>
@@ -402,4 +193,5 @@
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
+
 </html>
